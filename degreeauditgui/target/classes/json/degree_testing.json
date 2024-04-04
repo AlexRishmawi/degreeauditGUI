@@ -1,0 +1,122 @@
+[
+    {
+        "majorCourses": {
+            "12224407-e656-4fe7-9078-88f1d9dc8325": 1,
+            "2b41468d-41d9-4517-aa34-11cdedaac889": 5,
+            "d1584e6d-3a1f-4787-93bb-36dc05e894b2": 8,
+            "c08a8c04-7729-401a-820f-6c737c196344": 6,
+            "e46b49a6-7dfc-476d-ad9e-494c7478d254": 3,
+            "277c57bf-d5b8-4a69-941f-0f494c30d99e": 1,
+            "ceb7cd60-abcc-4bc1-a3b1-a30b81a824cd": 2,
+            "0ee3fc1c-ec19-4637-aeb5-614577b6d22f": 1,
+            "ef98f620-8290-4cc5-95b8-17eeec9545e0": 2,
+            "e0ffb4fd-f232-4106-859d-23fa91d31d52": 1,
+            "980e1056-4ed2-4459-b0e7-56d78eca5d73": 2,
+            "5844e157-e966-4ca8-a60b-a86f76903c6d": 1,
+            "d05b3843-51a5-4708-ac0c-c97964861027": 4,
+            "6c869950-13fa-48d7-9274-e97014b03164": 1
+        },
+        "id": "dfa84645-4278-44a3-8b3b-c6b4fc6257c5",
+        "totalCreditRequired": 125,
+        "subjectName": "Computer Science",
+        "electiveList": [
+            {
+                "courseChoices": {
+                    "2b41468d-41d9-4517-aa34-11cdedaac889": 1,
+                    "d1584e6d-3a1f-4787-93bb-36dc05e894b2": 1,
+                    "ef98f620-8290-4cc5-95b8-17eeec9545e0": 1,
+                    "e0ffb4fd-f232-4106-859d-23fa91d31d52": 1,
+                    "c08a8c04-7729-401a-820f-6c737c196344": 1,
+                    "5844e157-e966-4ca8-a60b-a86f76903c6d": 1,
+                    "d05b3843-51a5-4708-ac0c-c97964861027": 1,
+                    "e46b49a6-7dfc-476d-ad9e-494c7478d254": 1,
+                    "277c57bf-d5b8-4a69-941f-0f494c30d99e": 1,
+                    "6c869950-13fa-48d7-9274-e97014b03164": 1
+                },
+                "type": "AIU",
+                "creditRequired": 3
+            },
+            {
+                "courseChoices": {
+                    "12224407-e656-4fe7-9078-88f1d9dc8325": 1,
+                    "980e1056-4ed2-4459-b0e7-56d78eca5d73": 2
+                },
+                "type": "CMW",
+                "creditRequired": 6
+            },
+            {
+                "courseChoices": {
+                    "f8e10b3a-146b-4d43-a3d8-647028c98641": 2,
+                    "ceb7cd60-abcc-4bc1-a3b1-a30b81a824cd": 1,
+                    "0ee3fc1c-ec19-4637-aeb5-614577b6d22f": 1,
+                    "4bd274cb-260e-47a5-9893-203a3943d704": 2,
+                    "3d7aa3f8-bfb0-4f9e-af57-49818eacf9a6": 1
+                },
+                "type": "ARP",
+                "creditRequired": 6
+            },
+            {
+                "courseChoices": {
+                    "66089424-f471-402b-93de-660c04a87675": 1,
+                    "732e0849-4531-43d5-ae8e-363b59958631": 1,
+                    "fd91716d-1525-4d0a-a7ef-1a17b505d76a": 1,
+                    "29da7b4f-2964-4c06-9280-d3227effb4a3": 2,
+                    "f07b05ff-bdbd-4258-a8be-a0bcae0fddbb": 2,
+                    "f263eb71-f707-4203-9421-3b1c1a5861b2": 1
+                },
+                "type": "SCI",
+                "creditRequired": 7
+            },
+            {
+                "courseChoices": {
+                    "ee3b88e6-8cbe-487e-a91f-f0de95aa724a": 8,
+                    "d9ee653d-4c4f-4943-857c-9ad95bea5264": 8,
+                    "601a17ec-ae7a-4e61-89dd-03694cb67386": 8,
+                    "ada5d878-1f87-406e-be7e-dc5619933e5c": 8,
+                    "be9a6e7b-96a7-44b4-ba47-f21a9423d912": 8,
+                    "c9e4096c-593a-4a4e-8e04-effc8d448835": 8,
+                    "4d3a78fe-3193-40be-bb99-6bed3b8e2650": 8,
+                    "a95abe13-0083-437a-8cd0-1a1b6d9a2489": 8
+                },
+                "type": "GHS",
+                "creditRequired": 3
+            },
+            {
+                "courseChoices": {
+                    "dc16b702-b7a1-49ea-8eb3-ea423181cb17": 4,
+                    "afe8292b-aee6-49d7-aa49-49d07327c224": 4,
+                    "193087e4-a523-4b5f-9ce2-3aa1b5e614b3": 4,
+                    "642f3119-63f7-4bdb-bdf1-4f1ed4b4a4de": 4,
+                    "bc972a06-0b71-448b-b80f-66ffd3633ca5": 4,
+                    "bf880aee-d98c-411b-9dcf-b940d9b5d5df": 4,
+                    "4506ec04-ba37-4485-8ead-fe49292ebcbf": 4
+                },
+                "type": "GSS",
+                "creditRequired": 3
+            },
+            {
+                "courseChoices": {
+                    "b3babeb4-15a1-47ba-b192-36b2e4a4bc84": 1,
+                    "5484763f-4dd9-4efe-86fb-b901153d75c1": 1,
+                    "b9dcfb53-90b8-4c64-b9c0-a7933604bedc": 1,
+                    "20cef024-e96e-48a6-b9f1-ed1dd1657c63": 1,
+                    "980e1056-4ed2-4459-b0e7-56d78eca5d73": 1
+                },
+                "type": "INF",
+                "creditRequired": 3
+            },
+            {
+                "courseChoices": {
+                    "ff184e9a-7b3e-4d57-92c2-3d67608e5833": 1,
+                    "76964cab-f5e3-4889-9aa5-570f7f66b925": 1,
+                    "5373fc69-1e41-4570-a723-99e6581a4a4c": 1,
+                    "796a6f07-b074-4a86-92f8-36b591bf9b00": 1,
+                    "0ca66bcc-5e08-4e63-893e-dc5859a4f2ae": 1,
+                    "7ebfa301-df95-4818-97aa-d2da3932a2cb": 1
+                },
+                "type": "VSR",
+                "creditRequired": 3
+            }
+        ]
+    }
+]
