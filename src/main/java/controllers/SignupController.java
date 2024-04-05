@@ -14,7 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
-public class SignupController {
+public class SignupController implements Initializable {
     @FXML
     private TextField txt_firstName;
 
@@ -70,8 +70,8 @@ public class SignupController {
         App.setRoot("landing_page");
     }
 
-    // @Override
-    // public void initialize(URL url, ResourceBundle rb) {
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
 
-    // }
+    }
 }

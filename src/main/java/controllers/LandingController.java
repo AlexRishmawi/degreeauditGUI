@@ -7,8 +7,9 @@ import java.util.ResourceBundle;
 import java.net.URL;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 
-public class LandingController {
+public class LandingController implements Initializable {
     @FXML
     private void onLoginClicked(ActionEvent event) throws IOException {
         App.setRoot("login_page");
