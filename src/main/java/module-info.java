@@ -4,4 +4,7 @@ module aisle {
 
     opens aisle to javafx.fxml;
     exports aisle;
+
+    opens controllers to javafx.fxml;
+    exports controllers;
 }
