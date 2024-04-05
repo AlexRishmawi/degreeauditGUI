@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane id="signUpPage" 
+            prefWidth="1200" prefHeight="600"
+            xmlns="http://javafx.com/javafx/19"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.SignupController"
+>
+
+    <AnchorPane layoutX="0.0" layoutY="0.0" prefWidth="50">
+        <Button styleClass="backButton" text="Home" onAction="#back"/>
+    </AnchorPane>
+
+    <!-- Left Side - School Logo -->
+    <VBox layoutX="100.0" layoutY="50.0">
+        <Text text="Logo"/>
+    </VBox>
+
+    <VBox layoutX="400.0" layoutY="50.0" style="-fx-font-size: 20pt;">
+        <Text text="Sign Up"/>
+    </VBox>
+
+    <!-- Right Side - Text Field and Button -->
+    <AnchorPane layoutX="300.0">
+        <TextField fx:id="txt_firstName" prefWidth="300" layoutY="100.0" promptText="First Name"/>
+        <TextField fx:id="txt_lastName" prefWidth="300" layoutY="150.0" promptText="Last Name"/>
+        <TextField fx:id="txt_email" prefWidth="300" layoutY="200.0" promptText="Email"/>
+        <TextField fx:id="txt_password" prefWidth="300" layoutY="250.0" promptText="Password"/>
+        <TextField fx:id="txt_confirmPassword" prefWidth="300" layoutY="300.0" promptText="Confirm Password"/>
+
+        <Button prefWidth="300" layoutY="380.0" fx:id="button" text="Create an account" onAction="#signupClicked"/>
+    </AnchorPane>
+
+
+    <stylesheets>
+      <URL value="@styles.css" />
+   </stylesheets>
+</BorderPane>
