@@ -81,6 +81,14 @@ public class UserList {
         return null;
     }
 
+    public boolean checkUser(String email) {
+        for (User user : this.users) {
+            if (user.getEmail().equalsIgnoreCase(email)) {
+                return true;
+            }
+        }
+        return false;
+    }
     /**
      * Retrieves a user from the list based on their unique ID.
      * @param id The unique ID of the user.

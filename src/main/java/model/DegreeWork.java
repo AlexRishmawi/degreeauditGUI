@@ -47,6 +47,24 @@ public class DegreeWork {
         return (this.currentUser = this.userList.getUser(firstName, lastName, password)) != null;
     }
 
+    public boolean userExist(String email) {
+        return this.userList.checkUser(email);
+    }
+
+    public boolean signup(String firstName, String lastName, String email, String password, String confirmPassword, string studentID, boolean isAdvisor, ) {
+        if(this.userExist(email)) 
+            return false;
+        if(!password.equals(confirmPassword)) {
+            return false;
+        }
+        if(isAdvisor) {
+            this.createAdvisor(firstName, lastName, email, password, new ArrayList<Student>(), false);
+            this.login(email, password);
+        } else {
+            this.createStudent(firstName, lastName, email, password, email, password, studentID, "FRESHMEN",  null, null, 0, 0, confirmPassword); // Check if nulls work
+        }
+    }
+
     public boolean logout() {
         return (this.currentUser = null) == null &&
             this.userList.writeToFile() &&
