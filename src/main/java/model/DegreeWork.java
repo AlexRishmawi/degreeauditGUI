@@ -51,7 +51,7 @@ public class DegreeWork {
         return this.userList.checkUser(email);
     }
 
-    public boolean signup(String firstName, String lastName, String email, String password, String confirmPassword, string studentID, boolean isAdvisor, ) {
+    public boolean signup(String firstName, String lastName, String email, String password, String confirmPassword, String studentID, boolean isAdvisor, ) {
         if(this.userExist(email)) 
             return false;
         if(!password.equals(confirmPassword)) {
