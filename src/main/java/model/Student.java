@@ -253,7 +253,7 @@ public class Student extends User {
         String currSeason;
         int currYear;
         if(this.allSemester.size() != 0) {
-            Semester lastSemester = this.allSemester.getLast();
+            Semester lastSemester = this.allSemester.get(this.allSemester.size() - 1);
             currSeason = lastSemester.getSeason().toString();
             currYear = lastSemester.getYear();
         } else {

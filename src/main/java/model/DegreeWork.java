@@ -111,9 +111,9 @@ public class DegreeWork {
 
     public String displayEightSemesterPlan() {
         if (this.currentUser instanceof Student) {
-            return ((Student) this.currentUser).allSemesterPlan();
+            return ((Student) this.currentUser).toStringSemesterPlan();
         } else if (this.currentUser instanceof Advisor) {
-            return ((Advisor) this.currentUser).getCurrentStudent().allSemesterPlan();
+            return ((Advisor) this.currentUser).getCurrentStudent().toStringSemesterPlan();
         }
         return "No information to display";
     }

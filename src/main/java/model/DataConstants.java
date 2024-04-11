@@ -8,7 +8,7 @@ package model;
 public abstract class DataConstants {
 
     // Degree Constants
-    protected static final String DEGREE_FILE_NAME = "./json/degree.json";
+    protected static final String DEGREE_FILE_NAME = "./java/data/json/degree.json";
     protected static final String DEGREE_ID = "id";
     protected static final String DEGREE_TOTAL_CREDIT_REQUIRED = "totalCreditRequired";
     protected static final String DEGREE_MAJOR_COURSES = "majorCourses";
@@ -27,7 +27,7 @@ public abstract class DataConstants {
     protected static final String ELECTIVE_COURSE_CHOICES = "courseChoices";
 
     // Course Constants
-    protected static final String COURSE_FILE_NAME = "./json/course.json";
+    protected static final String COURSE_FILE_NAME = "./java/data/json/course.json";
     protected static final String COURSE_ID = "uuid";
     protected static final String COURSE_NAME = "name";
     protected static final String COURSE_SUBJECT = "subject";
@@ -49,7 +49,7 @@ public abstract class DataConstants {
     protected static final String USER_PASSWORD = "password";
 
     // Student Constants
-    protected static final String STUDENT_FILE_NAME = "./json/student.json";
+    protected static final String STUDENT_FILE_NAME = "./java/data/json/student.json";
     protected static final String STUDENT_CLASSIFICATION = "classification";
     protected static final String STUDENT_ID = "studentID";
     protected static final String STUDENT_ADVISOR_ID = "advisorID";
@@ -63,7 +63,7 @@ public abstract class DataConstants {
     protected static final String STUDENT_CURRENT_SEMESTER = "currentSemester";
 
     // Advisor Constants
-    protected static final String ADVISOR_FILE_NAME = "./json/advisor.json";
+    protected static final String ADVISOR_FILE_NAME = "./java/data/json/advisor.json";
     protected static final String ADVISOR_STUDENT_LIST = "studentList";
     protected static final String ADVISOR_IS_ADMIN = "isAdmin";
 }
