@@ -9,10 +9,16 @@ public class DegreeWork {
     private DegreeList degreeList;
     private User currentUser;
 
-    public DegreeWork() {
+    private static DegreeWork degreeWork;
+
+    private DegreeWork() {
         this.userList = UserList.getInstance();
         this.courseList = CourseList.getInstance();
         this.degreeList = DegreeList.getInstance();
+    }
+
+    public static DegreeWork getInstance() {
+        return degreeWork != null ? degreeWork : new DegreeWork();
     }
 
     public UserList getUserList() {
@@ -47,20 +53,21 @@ public class DegreeWork {
         return (this.currentUser = this.userList.getUser(firstName, lastName, password)) != null;
     }
 
-    public boolean userExist(String email) {
-        return this.userList.checkUser(email);
-    }
+    // public boolean userExist(String email) {
+    //     return this.userList.checkUser(email);
+    // }
 
     public boolean signup(String firstName, String lastName, String email, String password, String studentID, boolean isAdvisor) {
-        if(this.userExist(email)) 
+        if(this.userList.checkUser(email)) 
             return false;
         if(isAdvisor) {
             this.createAdvisor(firstName, lastName, email, password, new ArrayList<Student>(), false);
-            return this.login(email, password);
+            // return this.login(email, password);
         } else {
-            this.createStudent(firstName, lastName, email, password, studentID, "FRESHMEN", null, new ArrayList<String>(), null, 4.0, 4.0, "active"); // Check if nulls work
-            return this.login(email, password);
+            this.createStudent(firstName, lastName, email, password, studentID, "FRESHMEN", null, new ArrayList<String>(), new Degree(), 4.0, 4.0, "active"); // Check if nulls work
+            // return this.login(email, password);
         }
+        return true;
     }
 
     public boolean logout() {

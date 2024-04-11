@@ -12,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import model.DegreeWork;
 
 public class LoginController implements Initializable{
     @FXML
@@ -24,17 +25,18 @@ public class LoginController implements Initializable{
     private Label login_error;
 
     @FXML
-    private void loginClicked(MouseEvent event) throws IOException {
+    void loginClicked(ActionEvent event) {
         String userEmail = txt_userEmail.getText();
         String password = txt_userPassword.getText();
 
-        // DegreeWord degreeWord = new DegreeWord();
-        // if(!degreeWord.login(userEmail, password)) {
-        //     login_error.setText("Invalid login credentials.");
-        //     return;
-        // }
+        DegreeWork degreeWork = DegreeWork.getInstance();
+        if(!degreeWork.login(userEmail, password)) {
+            login_error.setText("Invalid login credentials.");
+            return;
+        }
 
         // App.setRoot("user_home");
+        System.out.println("Login successful");
     }
 
     @FXML
