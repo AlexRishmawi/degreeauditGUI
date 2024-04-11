@@ -51,17 +51,15 @@ public class DegreeWork {
         return this.userList.checkUser(email);
     }
 
-    public boolean signup(String firstName, String lastName, String email, String password, String confirmPassword, String studentID, boolean isAdvisor, ) {
+    public boolean signup(String firstName, String lastName, String email, String password, String studentID, boolean isAdvisor) {
         if(this.userExist(email)) 
             return false;
-        if(!password.equals(confirmPassword)) {
-            return false;
-        }
         if(isAdvisor) {
             this.createAdvisor(firstName, lastName, email, password, new ArrayList<Student>(), false);
-            this.login(email, password);
+            return this.login(email, password);
         } else {
-            this.createStudent(firstName, lastName, email, password, email, password, studentID, "FRESHMEN",  null, null, 0, 0, confirmPassword); // Check if nulls work
+            this.createStudent(firstName, lastName, email, password, studentID, "FRESHMEN", null, new ArrayList<String>(), null, 4.0, 4.0, "active"); // Check if nulls work
+            return this.login(email, password);
         }
     }
 
