@@ -1,13 +1,7 @@
 package model;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Queue;
 import java.util.UUID;
-
-import org.json.simple.JSONArray;
 
 public class Student extends User {
     private ClassLevel classification;
@@ -253,7 +247,7 @@ public class Student extends User {
         String currSeason;
         int currYear;
         if(this.allSemester.size() != 0) {
-            Semester lastSemester = this.allSemester.getLast();
+            Semester lastSemester = this.allSemester.get(this.allSemester.size() - 1);
             currSeason = lastSemester.getSeason().toString();
             currYear = lastSemester.getYear();
         } else {
