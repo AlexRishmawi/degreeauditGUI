@@ -84,6 +84,7 @@ public class UserList {
     public boolean checkUser(String email) {
         for (User user : this.users) {
             if (user.getEmail().equalsIgnoreCase(email)) {
+                System.out.println(email + user.getEmail());
                 return true;
             }
         }

@@ -1,7 +1,6 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.UUID;
 
 /**
@@ -244,6 +243,7 @@ public class Advisor extends User{
         return super.toString();
     }
 
+    /*
     public static void main(String[] args) {
         // Test Advisor Overloader
         Advisor newAdvisor = new Advisor("Aarsh", "Patel", "aarsh@email.sc.edu", "test1", false);
@@ -300,4 +300,5 @@ public class Advisor extends User{
         newAdvisor.editStudentFirstName("John");
         System.out.println(newAdvisor.getStudentList().get(0).getFirstName());
     }
+    */
 }

@@ -13,6 +13,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import model.Degree;
+import model.DegreeWork;
 
 public class SignupController implements Initializable {
     @FXML
@@ -30,39 +32,45 @@ public class SignupController implements Initializable {
     @FXML
     private TextField txt_confirmPassword;
 
-    @FXML
-    private Label signup_error;
+    // @FXML
+    // private TextField txt_studentID;
+
+    // @FXML
+    // private Label signup_error;
 
     @FXML
-    private void signupClicked(MouseEvent event) throws IOException {
+    void signupClicked(ActionEvent event) {
         String firstName = txt_firstName.getText();
         String lastName = txt_lastName.getText();
         String email = txt_email.getText();
         String password = txt_password.getText();
         String confirmPassword = txt_confirmPassword.getText();
+        //String studentID = txt_studentID.getText();
 
         if(firstName.equals("") || lastName.equals("") || email.equals("")
             || password.equals("") || confirmPassword.equals("")) 
         {
-            signup_error.setText("Not blank, Bruh!");
-            return;
+            // signup_error.setText("Not blank, Bruh!");
+            // return;
+            System.out.println("Not blank, Bruh!");
         }
 
         if(!password.equals(confirmPassword)) {
-            signup_error.setText("Confirm password must be same, Bruh!");
+            // signup_error.setText("Confirm password must be same, Bruh!");
+            System.out.println("Confirm password must be same, Bruh!");
         }
 
-        // DegreeWork degreeWord = new DegreeWord();
+        DegreeWork degreeWork = DegreeWork.getInstance();
 
-        // if(!degreeWord.createUser("student", firstName, lastName, email, password)) {
-        //     signup_error.setText("Sorry, this user coudn't be created. I don't know why");
-        //     return;
-        // }
+        if(!degreeWork.signup(firstName, lastName, email, password, "X83012475", false)) {
+            // signup_error.setText("Account already exists.");
+            //System.out.print(email);
+            // return;
+            System.out.println("Account already exists.");
+        }
 
-        // degreeWord.login(email, password);
-        // User user = degreeWord.getCurrentUser();
-        // App.setRoot("student_page");
-
+        // App.setRoot("landing_page");
+        System.out.println("Signup successful");
     }
 
     @FXML

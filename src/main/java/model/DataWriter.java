@@ -1,18 +1,13 @@
 package model;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.UUID;
 
 public class DataWriter extends DataConstants {
 
