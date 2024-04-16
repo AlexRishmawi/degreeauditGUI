@@ -283,6 +283,39 @@ public class DegreeWork {
         return ((Student) currentUser).toString();
     }
 
+    public ArrayList<ArrayList<String>> advisorSearchStudents(String name) {
+        if(name != null && name != "") {
+            ArrayList<ArrayList<String>> returnedList = new ArrayList<>();
+            for(User user : userList.getAllUsers()) {
+                if(user.isStudent()) {
+                    if (user.getFirstName().startsWith(name) || user.getLastName().startsWith(name)
+                        || ((Student) user).getStudentID().startsWith(name)) {
+                        ArrayList<String> newList = new ArrayList<>();
+                        newList.add(user.getFirstName());
+                        newList.add(user.getLastName());
+                        newList.add(((Student) user).getStudentID());
+                        newList.add(((Student) user).getLevel().toString());
+                        returnedList.add(newList);
+                    }
+                }
+            }
+            return returnedList;
+        }
+
+        ArrayList<ArrayList<String>> returnedList = new ArrayList<>();
+        for(User user : userList.getAllUsers()) {
+            if(user.isStudent()) {
+                ArrayList<String> newList = new ArrayList<>();
+                newList.add(user.getFirstName());
+                newList.add(user.getLastName());
+                newList.add(((Student) user).getStudentID());
+                newList.add(((Student) user).getLevel().toString());
+                returnedList.add(newList);
+            }
+        }
+        return returnedList;
+    }
+
     // ----- Admin Method -----
     public boolean addCourse(String subject, String code, String name, String description, int credit,
         ArrayList<Season> semester, ArrayList<Prerequisites> prerequisites) 
