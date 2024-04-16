@@ -51,13 +51,14 @@ public class SignupController implements Initializable {
             || password.equals("") || confirmPassword.equals("")) 
         {
             // signup_error.setText("Not blank, Bruh!");
-            // return;
             System.out.println("Not blank, Bruh!");
+            return;
         }
 
         if(!password.equals(confirmPassword)) {
             // signup_error.setText("Confirm password must be same, Bruh!");
             System.out.println("Confirm password must be same, Bruh!");
+            return;
         }
 
         DegreeWork degreeWork = DegreeWork.getInstance();
@@ -67,6 +68,7 @@ public class SignupController implements Initializable {
             //System.out.print(email);
             // return;
             System.out.println("Account already exists.");
+            return;
         }
 
         // App.setRoot("landing_page");
