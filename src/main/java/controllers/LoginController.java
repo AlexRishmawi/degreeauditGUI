@@ -21,8 +21,8 @@ public class LoginController implements Initializable{
     @FXML
     private TextField txt_userPassword;
 
-    @FXML
-    private Label login_error;
+    // @FXML
+    // private Label login_error;
 
     @FXML
     void loginClicked(ActionEvent event) {
@@ -31,7 +31,8 @@ public class LoginController implements Initializable{
 
         DegreeWork degreeWork = DegreeWork.getInstance();
         if(!degreeWork.login(userEmail, password)) {
-            login_error.setText("Invalid login credentials.");
+            // login_error.setText("Invalid login credentials.");
+            System.out.println("Invalid login credentials.");
             return;
         }
 

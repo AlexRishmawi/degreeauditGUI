@@ -88,6 +88,8 @@ public class DegreeWork {
         this.userList.addUser(tempStudent);
         this.degreeList.addDegree(degree);
         setCurrentUser(tempStudent);
+        this.userList.writeToFile();
+        this.degreeList.writeToFile();
         return tempStudent;
     }
 
@@ -279,6 +281,28 @@ public class DegreeWork {
             }    
         }
         return ((Student) currentUser).toString();
+    }
+
+    public ArrayList<Student> advisorSearchStudents(String name) {
+        ArrayList<Student> returnedList = new ArrayList<>();
+        if(name != null && name != "") {
+            for(User user : userList.getAllUsers()) {
+                if(user.isStudent()) {
+                    if (user.getFirstName().startsWith(name) || user.getLastName().startsWith(name)
+                        || ((Student) user).getStudentID().startsWith(name)) {
+                        returnedList.add((Student) user);
+                    }
+                }
+            }
+            return returnedList;
+        }
+
+        for(User user : userList.getAllUsers()) {
+            if(user.isStudent()) {
+                returnedList.add((Student) user);
+            }
+        }
+        return returnedList;
     }
 
     // ----- Admin Method -----
