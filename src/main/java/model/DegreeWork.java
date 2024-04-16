@@ -88,6 +88,8 @@ public class DegreeWork {
         this.userList.addUser(tempStudent);
         this.degreeList.addDegree(degree);
         setCurrentUser(tempStudent);
+        this.userList.writeToFile();
+        this.degreeList.writeToFile();
         return tempStudent;
     }
 
