@@ -25,7 +25,7 @@ public class LoginController implements Initializable{
     // private Label login_error;
 
     @FXML
-    void loginClicked(ActionEvent event) {
+    void loginClicked(ActionEvent event) throws IOException{
         String userEmail = txt_userEmail.getText();
         String password = txt_userPassword.getText();
 
@@ -36,8 +36,7 @@ public class LoginController implements Initializable{
             return;
         }
 
-        // App.setRoot("user_home");
-        System.out.println("Login successful");
+        App.setRoot("student_dashboard_page");
     }
 
     @FXML

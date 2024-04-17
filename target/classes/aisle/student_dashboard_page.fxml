@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.effect.Shadow?>
@@ -8,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
 
-<Pane id="student-dashboard-page" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<Pane id="student-dashboard-page" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PleaseProvideControllerClassName">
    <children>
       <Rectangle id="header" height="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1280.0">
          <effect>
@@ -34,5 +36,7 @@
             </ImageView>
          </graphic>
       </MenuButton>
+      <PieChart layoutX="492.0" layoutY="189.0" />
+      <Label fx:id="studentName" layoutX="339.0" layoutY="121.0" text="Label" />
    </children>
 </Pane>
