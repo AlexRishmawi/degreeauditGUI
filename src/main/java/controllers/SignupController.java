@@ -39,7 +39,7 @@ public class SignupController implements Initializable {
     // private Label signup_error;
 
     @FXML
-    void signupClicked(ActionEvent event) {
+    void signupClicked(ActionEvent event) throws IOException {
         String firstName = txt_firstName.getText();
         String lastName = txt_lastName.getText();
         String email = txt_email.getText();
@@ -65,14 +65,11 @@ public class SignupController implements Initializable {
 
         if(!degreeWork.signup(firstName, lastName, email, password, "X83012475", false)) {
             // signup_error.setText("Account already exists.");
-            //System.out.print(email);
-            // return;
             System.out.println("Account already exists.");
             return;
         }
 
-        // App.setRoot("landing_page");
-        System.out.println("Signup successful");
+        App.setRoot("student_dashboard_page");
     }
 
     @FXML
