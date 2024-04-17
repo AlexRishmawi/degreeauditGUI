@@ -30,7 +30,7 @@ public class DataWriter extends DataConstants {
         }
 
         // writeToFile(COURSE_FILE_NAME, allDegreeObject);
-        writeToFile("./json/degree_testing.json", allDegreeObject);
+        writeToFile("./src/main/java/data/degree_testing.json", allDegreeObject);
     }
 
     @SuppressWarnings("unchecked")
@@ -56,7 +56,7 @@ public class DataWriter extends DataConstants {
             allCourseObject.add(new JSONObject(courseObject));
         }
 
-        writeToFile("./json/course_testing.json", allCourseObject);
+        writeToFile("./src/main/java/data/course_testing.json", allCourseObject);
         // writeToFile(COURSE_FILE_NAME, allCourseObject);
     }
 
@@ -82,8 +82,8 @@ public class DataWriter extends DataConstants {
             }
         }
 
-        writeToFile("./json/student_testing.json", allStudentObject);
-        writeToFile("./json/advisor_testing.json", allAdvisorObject);
+        writeToFile("./src/main/java/data/student_testing.json", allStudentObject);
+        writeToFile("./src/main/java/data/advisor_testing.json", allAdvisorObject);
         // writeToFile(STUDENT_FILE_NAME, allStudentObject);
         // writeToFile(ADVISOR_FILE_NAME, allAdvisorObject);
     }

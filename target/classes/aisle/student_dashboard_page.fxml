@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.effect.Shadow?>
@@ -10,8 +11,8 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.StudentDashboardController">
-    <StackPane AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
+<AnchorPane prefHeight="141.0" prefWidth="539.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.StudentDashboardController">
+    <StackPane prefHeight="323.0" prefWidth="539.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
         <children>
             <Rectangle id="header" height="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
                   <effect>
@@ -43,11 +44,12 @@
                     <Insets />
                 </StackPane.margin>
             </MenuButton>
-         <Rectangle fill="#73000a" height="27.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="27.0" StackPane.alignment="CENTER_RIGHT">
+         <Rectangle fill="#73000a" height="27.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="27.0" StackPane.alignment="TOP_RIGHT">
             <StackPane.margin>
-               <Insets right="5.0" />
+               <Insets right="5.0" top="7.0" />
             </StackPane.margin>
          </Rectangle>
+         <Label fx:id="studentName" />
         </children>
     </StackPane>
 </AnchorPane>

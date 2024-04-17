@@ -15,10 +15,14 @@ public class DegreeWork {
         this.userList = UserList.getInstance();
         this.courseList = CourseList.getInstance();
         this.degreeList = DegreeList.getInstance();
+        this.currentUser = null;
     }
 
     public static DegreeWork getInstance() {
-        return degreeWork != null ? degreeWork : new DegreeWork();
+        if(degreeWork == null) {
+            return new DegreeWork();
+        }
+        return degreeWork;
     }
 
     public UserList getUserList() {
@@ -44,8 +48,7 @@ public class DegreeWork {
 
     // -------- User method --------
     public boolean login(String email, String password) {
-        this.currentUser = this.userList.getUser(email, password);
-        //System.out.println(this.currentUser);
+        this.setCurrentUser(this.userList.getUser(email, password));
         return this.currentUser != null;
     }
 
@@ -67,6 +70,8 @@ public class DegreeWork {
             this.createStudent(firstName, lastName, email, password, studentID, "FRESHMEN", null, new ArrayList<String>(), new Degree(), 4.0, 4.0, "active"); // Check if nulls work
             // return this.login(email, password);
         }
+        this.userList.writeToFile();
+        this.degreeList.writeToFile();
         return true;
     }
 
@@ -265,9 +270,10 @@ public class DegreeWork {
     
 
     public Student getCurrentStudent() {
-        if (this.currentUser.getUserType() == UserType.ADVISOR) {
+        if (this.currentUser.isStudent()) {
             return ((Advisor) this.currentUser).getCurrentStudent();
         }
+        System.out.println(this.currentUser.getFirstName());
         return (Student) this.currentUser;
     }
 
