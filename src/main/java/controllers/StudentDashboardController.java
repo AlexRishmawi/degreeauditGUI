@@ -72,7 +72,8 @@ public class StudentDashboardController implements Initializable {
         header.widthProperty().bind(stackPane.widthProperty());
         
         DegreeWork degreeWork = DegreeWork.getInstance();
-        Student student = (Student) degreeWork.getCurrentUser();
+        if (degreeWork.getCurrentUser().isStudent()) {
+            Student student = (Student) degreeWork.getCurrentUser();
 
         if(student == null) {
             System.out.println("Student is null");

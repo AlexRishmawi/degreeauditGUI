@@ -12,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import model.DegreeWork;
 import model.Student;
+import model.Advisor;
 
 public class LoginController implements Initializable{
     @FXML
@@ -35,14 +36,18 @@ public class LoginController implements Initializable{
             return;
         }
 
-        Student student = (Student) degreeWork.getCurrentUser();
-        
+        if(degreeWork.getCurrentUser() instanceof Student) {
+            Student student = (Student) degreeWork.getCurrentUser();
+            
 
-        if(student == null) {
-            System.out.println("Student is null");
+            if(student == null) {
+                System.out.println("Student is null");
+            }
+
+            App.setRoot("student_dashboard_page");
+        } else if(degreeWork.getCurrentUser() instanceof Advisor) {
+            App.setRoot("advisor_search_page");
         }
-
-        App.setRoot("student_dashboard_page");
     }
 
     @FXML
