@@ -48,10 +48,16 @@ public class DataReader extends DataConstants {
                     if(type.equalsIgnoreCase("student")) {
                         // Student information
                         String level = (String) userJSON.get(STUDENT_CLASSIFICATION);
-                        UUID advisorID = UUID.fromString((String) userJSON.get(STUDENT_ADVISOR_ID));
+
+                        Advisor advisor = null;
+                        String str_advisorID = (String) userJSON.get(STUDENT_ADVISOR_ID);
+                        if (str_advisorID != null) {
+                            UUID advisorID = UUID.fromString(str_advisorID);
+                            int advisorIndex = mappingAdvisorToStudent.get(advisorID);
+                            advisor = (Advisor) loadedUsers.get(advisorIndex);
+                        }
+
                         String studentID = (String) userJSON.get(STUDENT_ID);
-                        int advisorIndex = mappingAdvisorToStudent.get(advisorID);
-                        Advisor advisor = (Advisor) loadedUsers.get(advisorIndex);
                         // String studentID2 = (String) userJSON.get(STUDENT_ID);
 
                         ArrayList<String> notes = new ArrayList<>();

@@ -35,16 +35,8 @@ public class UserList {
      */
     public User getUser(String email, String password) {
         for (User user : this.users) {
-            if(user instanceof Advisor) {
-                if (user.getEmail().equalsIgnoreCase(email) && user.getPassword().equalsIgnoreCase(password)) {
-                    return user;
-                } else {
-                    for (Student student : ((Advisor) user).getStudentList()) {
-                        if (student.getEmail().equalsIgnoreCase(email) && student.getPassword().equalsIgnoreCase(password)) {
-                            return student;
-                        }
-                    }
-                }
+            if (user.getEmail().equalsIgnoreCase(email) && user.getPassword().equalsIgnoreCase(password)) {
+                return user;
             }
         }
         return null;

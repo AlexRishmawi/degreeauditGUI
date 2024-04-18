@@ -2,6 +2,7 @@ package model;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
+import java.util.regex.Pattern;
 
 public class DegreeWork {
     private UserList userList;
@@ -91,8 +92,6 @@ public class DegreeWork {
         this.userList.addUser(tempStudent);
         this.degreeList.addDegree(degree);
         setCurrentUser(tempStudent);
-        this.userList.writeToFile();
-        this.degreeList.writeToFile();
         return tempStudent;
     }
 
@@ -287,23 +286,24 @@ public class DegreeWork {
         return ((Student) currentUser).toString();
     }
 
-    public ArrayList<Student> advisorSearchStudents(String name) {
+    public ArrayList<Student> advisorSearchStudents(String find_info) {
         ArrayList<Student> returnedList = new ArrayList<>();
-        if(name != null && name != "") {
+        if(find_info != null && find_info != "") {
             for(User user : userList.getAllUsers()) {
                 if(user.isStudent()) {
-                    if (user.getFirstName().startsWith(name) || user.getLastName().startsWith(name)
-                        || ((Student) user).getStudentID().startsWith(name)) {
-                        returnedList.add((Student) user);
-                    }
+                    returnedList.add((Student) user);
                 }
             }
-            return returnedList;
-        }
-
-        for(User user : userList.getAllUsers()) {
-            if(user.isStudent()) {
-                returnedList.add((Student) user);
+        } else {
+            for(User user : userList.getAllUsers()) {
+                if(user.isStudent()) {
+                    String[] infos = {user.getFirstName(), user.getLastName(), ((Student) user).getStudentID()};
+                    for(String info: infos) {
+                        if(Pattern.compile(Pattern.quote(find_info), Pattern.CASE_INSENSITIVE).matcher(info).find()) {
+                            returnedList.add((Student) user);
+                        }
+                    }
+                }
             }
         }
         return returnedList;
