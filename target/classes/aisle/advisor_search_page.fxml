@@ -11,9 +11,11 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.StudentDashboardController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdvisorSearchController">
+   <VBox fx:id="studentList" layoutY="88.0" prefHeight="631.0" prefWidth="1280.0" />
     <StackPane fx:id="stackPane" prefHeight="49.0" prefWidth="1280.0" AnchorPane.bottomAnchor="671.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <children>
          <Rectangle id="header" fx:id="headerShadow" fill="#73000a" height="46.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1280.0" StackPane.alignment="TOP_CENTER">
@@ -74,7 +76,7 @@
        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="45.0" prefWidth="653.0" />
          <StackPane alignment="CENTER_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="36.0" prefWidth="1286.0">
             <children>
-               <Button id="advisorSearchButton" fx:id="advisorSearchButton" mnemonicParsing="false" prefHeight="36.0" prefWidth="36.0" StackPane.alignment="CENTER_LEFT">
+               <Button id="advisorSearchButton" fx:id="advisorSearchButton" mnemonicParsing="false" onAction="#searchClicked" prefHeight="36.0" prefWidth="36.0" StackPane.alignment="CENTER_LEFT">
                   <StackPane.margin>
                      <Insets left="5.0" />
                   </StackPane.margin>
