@@ -61,6 +61,11 @@ public class StudentDashboardController implements Initializable {
             level.setText(student.getDegree().getDegreeType());
             ID.setText(student.getStudentID());
         }
+<<<<<<< HEAD
 
+=======
+        
+        studentName.setText(student.toStringAccount());
+>>>>>>> parent of 5aae6f3 (working pie)
     }
 }
