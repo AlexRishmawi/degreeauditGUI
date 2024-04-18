@@ -18,3 +18,8 @@
     -fx-background-color:#73000A;
 }
 
+.menu-item {
+    -fx-background-color: #73000A;
+    -fx-text-fill: white;
+    -fx-color: #73000A;
+}

@@ -10,16 +10,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="141.0" prefWidth="539.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.StudentDashboardController">
-    <StackPane prefHeight="323.0" prefWidth="539.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.StudentDashboardController">
+    <StackPane fx:id="stackPane" prefHeight="49.0" prefWidth="1280.0" AnchorPane.bottomAnchor="671.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <children>
-            <Rectangle id="header" height="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
-                  <effect>
-                     <Shadow />
-                  </effect>
-               </Rectangle>
-               <Rectangle id="header" fill="#73000a" height="45.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+         <Rectangle id="header" fx:id="headerShadow" fill="#73000a" height="46.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1280.0" StackPane.alignment="TOP_CENTER">
+            <effect>
+               <Shadow />
+            </effect>
+         </Rectangle>
+         <Rectangle id="header" fx:id="header" fill="#73000a" height="46.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1280.0" StackPane.alignment="TOP_CENTER" />
             <ImageView fx:id="header_img" fitHeight="27.0" fitWidth="169.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_LEFT">
                 <image>
                     <Image url="@assests/img/usc_logo_horizontal_RGB_G_rev.png" />
@@ -30,8 +31,7 @@
             </ImageView>
             <MenuButton fx:id="menuButton" mnemonicParsing="false" prefHeight="23.0" prefWidth="69.0" styleClass="menuButton" StackPane.alignment="TOP_RIGHT">
                 <items>
-                    <MenuItem mnemonicParsing="false" text="Action 1" />
-                    <MenuItem mnemonicParsing="false" text="Action 2" />
+                    <MenuItem id="menu-items" mnemonicParsing="false" text="Log Out" />
                 </items>
                 <graphic>
                     <ImageView fitHeight="29.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
@@ -49,7 +49,67 @@
                <Insets right="5.0" top="7.0" />
             </StackPane.margin>
          </Rectangle>
-         <Label fx:id="studentName" />
+         <ImageView fitHeight="32.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_RIGHT">
+            <image>
+               <Image url="@assests/img/User-avatar.svg.png" />
+            </image>
+            <StackPane.margin>
+               <Insets right="6.0" top="7.0" />
+            </StackPane.margin>
+         </ImageView>
         </children>
     </StackPane>
+   <StackPane layoutX="114.0" layoutY="235.0" prefHeight="150.0" prefWidth="200.0">
+      <children>
+         <Rectangle arcHeight="25.0" arcWidth="25.0" fill="#ffffff00" height="338.0" stroke="#73000a" strokeWidth="3.0" width="233.0" />
+         <ImageView fitHeight="109.0" fitWidth="126.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_CENTER">
+            <image>
+               <Image url="@assests/img/User-avatar.svg.png" />
+            </image>
+            <StackPane.margin>
+               <Insets top="15.0" />
+            </StackPane.margin>
+         </ImageView>
+         <Text fill="#545454" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" textAlignment="RIGHT" StackPane.alignment="CENTER_LEFT">
+            <StackPane.margin>
+               <Insets left="30.0" top="-42.0" />
+            </StackPane.margin>
+         </Text>
+         <Text fill="#545454" strokeType="OUTSIDE" strokeWidth="0.0" text="ID:" textAlignment="RIGHT" wrappingWidth="61.26041793823242" StackPane.alignment="CENTER_LEFT">
+            <StackPane.margin>
+               <Insets left="30.0" top="53.0" />
+            </StackPane.margin>
+         </Text>
+         <Text fill="#545454" strokeType="OUTSIDE" strokeWidth="0.0" text="Class:" textAlignment="RIGHT" wrappingWidth="60.958335876464844" StackPane.alignment="CENTER_LEFT">
+            <StackPane.margin>
+               <Insets left="30.0" top="149.0" />
+            </StackPane.margin>
+         </Text>
+         <Text fill="#545454" strokeType="OUTSIDE" strokeWidth="0.0" text="Level:" textAlignment="RIGHT" wrappingWidth="61.364585876464844" StackPane.alignment="CENTER_LEFT">
+            <StackPane.margin>
+               <Insets left="30.0" top="250.0" />
+            </StackPane.margin>
+         </Text>
+         <Label fx:id="studentName" prefHeight="31.0" prefWidth="66.0" text="NAME" StackPane.alignment="CENTER_RIGHT">
+            <StackPane.margin>
+               <Insets right="45.0" top="-39.0" />
+            </StackPane.margin>
+         </Label>
+         <Label fx:id="level" prefHeight="31.0" prefWidth="66.0" text="NAME" StackPane.alignment="CENTER_RIGHT">
+            <StackPane.margin>
+               <Insets right="45.0" top="250.0" />
+            </StackPane.margin>
+         </Label>
+         <Label fx:id="classLevel" prefHeight="31.0" prefWidth="66.0" text="NAME" StackPane.alignment="CENTER_RIGHT">
+            <StackPane.margin>
+               <Insets right="45.0" top="149.0" />
+            </StackPane.margin>
+         </Label>
+         <Label fx:id="ID" prefHeight="31.0" prefWidth="66.0" text="NAME" StackPane.alignment="CENTER_RIGHT">
+            <StackPane.margin>
+               <Insets right="45.0" top="54.0" />
+            </StackPane.margin>
+         </Label>
+      </children>
+   </StackPane>
 </AnchorPane>
