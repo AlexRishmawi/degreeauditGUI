@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import model.DegreeWork;
+import model.Student;
 
 public class LoginController implements Initializable{
     @FXML
@@ -32,6 +33,13 @@ public class LoginController implements Initializable{
             // login_error.setText("Invalid login credentials.");
             System.out.println("Invalid login credentials.");
             return;
+        }
+
+        Student student = (Student) degreeWork.getCurrentUser();
+        
+
+        if(student == null) {
+            System.out.println("Student is null");
         }
 
         App.setRoot("student_dashboard_page");

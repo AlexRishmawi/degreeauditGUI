@@ -20,7 +20,7 @@ public class DegreeWork {
 
     public static DegreeWork getInstance() {
         if(degreeWork == null) {
-            return new DegreeWork();
+            degreeWork = new DegreeWork();
         }
         return degreeWork;
     }
@@ -70,8 +70,6 @@ public class DegreeWork {
             this.createStudent(firstName, lastName, email, password, studentID, "FRESHMEN", null, new ArrayList<String>(), new Degree(), 4.0, 4.0, "active"); // Check if nulls work
             // return this.login(email, password);
         }
-        this.userList.writeToFile();
-        this.degreeList.writeToFile();
         return true;
     }
 

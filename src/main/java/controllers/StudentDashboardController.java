@@ -49,9 +49,7 @@ public class StudentDashboardController implements Initializable {
         header.widthProperty().bind(stackPane.widthProperty());
         
         DegreeWork degreeWork = DegreeWork.getInstance();
-        degreeWork.login("tHill@email.sc.edu", "password");
         Student student = (Student) degreeWork.getCurrentUser();
-        
 
         if(student == null) {
             System.out.println("Student is null");

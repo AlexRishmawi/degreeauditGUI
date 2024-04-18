@@ -140,7 +140,7 @@ public class User {
      */
     public String toString() {
         return "Name: " + this.firstName + " " + this.lastName + 
-            "\tEmail: " + this.email;
+            "\nEmail: " + this.email;
     }
 
     /**
