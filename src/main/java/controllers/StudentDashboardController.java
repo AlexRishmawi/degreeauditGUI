@@ -78,14 +78,19 @@ public class StudentDashboardController implements Initializable {
             System.out.println("Student is null");
         }
 
+        int completed = student.getCompletedCourse().size();
+        int progress = student.getCurrentSemester().getCourses().size();
+        int total = student.getDegree().getTotalCreditRequired();
+        int not_started = total - (completed + progress);
+
         ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
-            new PieChart.Data("Completed", student.getCompletedCourse().size()),
-            new PieChart.Data("In Progress", student.getCurrentSemester().getCourses().size()),
-            new PieChart.Data("Not Started", student.getDegree().getTotalCreditRequired() - (student.getCompletedCourse().size() + student.getCurrentSemester().getCourses().size()));
+            new PieChart.Data("Completed", completed),
+            new PieChart.Data("In Progress", progress),
+            new PieChart.Data("Not Started", not_started)
         );
 
         progressPie.setData(pieChartData);
-        progressPie.setLabelsVisible(false);
+        progressPie.setLabelsVisible(true);
         
         studentName.setText(student.getFirstName() + " " + student.getLastName());
         ID.setText(student.getStudentID());

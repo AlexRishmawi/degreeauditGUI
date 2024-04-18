@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.chart.StackedBarChart?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
@@ -116,7 +119,27 @@
    <StackPane layoutX="602.0" layoutY="75.0" prefHeight="150.0" prefWidth="200.0">
       <children>
          <Rectangle arcHeight="25.0" arcWidth="25.0" fill="#73000a00" height="219.0" stroke="#73000a" strokeType="INSIDE" strokeWidth="3.0" width="587.0" />
+         <PieChart fx:id="progressPie" prefHeight="164.0" prefWidth="198.0" />
       </children>
    </StackPane>
-   <PieChart fx:id="progressPie" layoutX="341.0" layoutY="207.0" />
+   <StackedBarChart fx:id="stackedBarChart">
+        <xAxis>
+            <NumberAxis side="BOTTOM" label="Percentage" lowerBound="0" upperBound="100" tickUnit="10"/>
+        </xAxis>
+        <yAxis>
+            <CategoryAxis label="Categories" categories="['Category 1', 'Category 2', 'Category 3']"/>
+        </yAxis>
+        <series>
+            <XYChart.Series name="Data Series 1">
+                <XYChart.Data xValue="25" YValue="Category 1"/>
+                <XYChart.Data xValue="35" YValue="Category 2"/>
+                <XYChart.Data xValue="40" YValue="Category 3"/>
+            </XYChart.Series>
+            <XYChart.Series name="Data Series 2">
+                <XYChart.Data xValue="30" YValue="Category 1"/>
+                <XYChart.Data xValue="15" YValue="Category 2"/>
+                <XYChart.Data xValue="20" YValue="Category 3"/>
+            </XYChart.Series>
+        </series>
+    </StackedBarChart>
 </AnchorPane>
