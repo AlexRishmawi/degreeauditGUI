@@ -1,0 +1,25 @@
+.root {
+    -fx-font-size: 16pt;
+    -fx-font-family: "Helvetica";
+    -fx-text-fill: black;
+}
+
+.button {
+    -fx-background-color: #73000A;
+    -fx-text-fill: white;
+    
+}
+
+.backButton {
+    -fx-font-size: 8pt;
+}
+
+.menuButton {
+    -fx-background-color:#73000A;
+}
+
+.menu-item {
+    -fx-background-color: #73000A;
+    -fx-text-fill: white;
+    -fx-color: #73000A;
+}
