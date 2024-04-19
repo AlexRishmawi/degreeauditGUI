@@ -120,6 +120,7 @@ public class StudentDashboardController implements Initializable{
         pieChart.setLabelsVisible(false);
     }
 
+    @SuppressWarnings("unchecked")
     private void setupStackedBarChart() {
         CategoryAxis yAxis = new CategoryAxis();
         NumberAxis xAxis = new NumberAxis();

@@ -10,6 +10,10 @@
     
 }
 
+.vbox {
+    -fx-background-color: #73000A;
+}
+
 .backButton {
     -fx-font-size: 8pt;
 }

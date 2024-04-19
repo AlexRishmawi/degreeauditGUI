@@ -10,10 +10,7 @@ import java.net.URL;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
-import model.Degree;
 import model.DegreeWork;
 
 public class SignupController implements Initializable {
