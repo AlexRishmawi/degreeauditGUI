@@ -3,16 +3,21 @@ package controllers;
 import aisle.App;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.net.URL;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
 import model.DegreeWork;
+import model.Semester;
 import model.Student;
 import model.Advisor;
+import model.Course;
 
 public class SemesterPlan implements Initializable {
     private DegreeWork degreeWork = DegreeWork.getInstance();
@@ -27,9 +32,9 @@ public class SemesterPlan implements Initializable {
     private void generateSemesterList() {
         semesterPlan_box.getChildren().clear();
         for(Semester semester: semesterPlan) {
-            TextField semesterYear = new TextField(semester.getYear());
+            TextField semesterYear = new TextField(Integer.toString(semester.getYear()));
             TextField semesterSeason = new TextField(semester.getSeason().toString());
-            TextField semesterCredit = new TextField(semester.getCreditLimit());
+            TextField semesterCredit = new TextField(Integer.toString(semester.getCreditLimit()));
             
             Button showCoursesButton = new Button("Show Courses");
             showCoursesButton.setOnAction(event -> {
