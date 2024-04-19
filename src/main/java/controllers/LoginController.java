@@ -44,7 +44,7 @@ public class LoginController implements Initializable{
                 System.out.println("Student is null");
             }
 
-            App.setRoot("student_dashboard_page");
+            App.setRoot("semester_plan");
         } else if(degreeWork.getCurrentUser() instanceof Advisor) {
             App.setRoot("advisor_search_page");
         }

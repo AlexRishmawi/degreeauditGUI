@@ -182,7 +182,7 @@ public class Student extends User {
     }
 
     public ArrayList<Semester> getSemesterPlans() {
-        // initializeSemesterPlan();
+        initializeSemesterPlan();
         return this.semestersPlan;
     }
 

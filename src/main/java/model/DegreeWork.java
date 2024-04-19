@@ -91,8 +91,6 @@ public class DegreeWork {
         this.userList.addUser(tempStudent);
         this.degreeList.addDegree(degree);
         setCurrentUser(tempStudent);
-        this.userList.writeToFile();
-        this.degreeList.writeToFile();
         return tempStudent;
     }
 
@@ -119,6 +117,15 @@ public class DegreeWork {
             return ((Advisor) this.currentUser).getCurrentStudent().toString();
         }
         return "No information to display";
+    }
+
+    public ArrayList<Semester> getSemesterPlan() {
+        if (this.currentUser instanceof Student) {
+            return ((Student) this.currentUser).getSemesterPlans();
+        } else if (this.currentUser instanceof Advisor) {
+            return ((Advisor) this.currentUser).getCurrentStudent().getSemesterPlans();
+        }
+        return null;
     }
 
     public String displayEightSemesterPlan() {

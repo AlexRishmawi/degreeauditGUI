@@ -52,7 +52,6 @@ public class DataReader extends DataConstants {
                         String studentID = (String) userJSON.get(STUDENT_ID);
                         int advisorIndex = mappingAdvisorToStudent.get(advisorID);
                         Advisor advisor = (Advisor) loadedUsers.get(advisorIndex);
-                        // String studentID2 = (String) userJSON.get(STUDENT_ID);
 
                         ArrayList<String> notes = new ArrayList<>();
                         JSONArray noteJsonArray = (JSONArray) userJSON.get(STUDENT_NOTES);
