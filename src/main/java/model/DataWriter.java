@@ -29,7 +29,7 @@ public class DataWriter extends DataConstants {
 
             allDegreeObject.add(degreeObject);
         }
-
+        
         writeToFile(DEGREE_FILE_NAME, allDegreeObject);
     }
 
@@ -39,6 +39,7 @@ public class DataWriter extends DataConstants {
         for (Course course : allCourses) {
             HashMap<String, Object> courseObject = new HashMap<>();
             courseObject.put(COURSE_ID, course.getID().toString());
+            courseObject.put(COURSE_NAME, course.getCourseName());
             courseObject.put(COURSE_SUBJECT, course.getSubject());
             courseObject.put(COURSE_CODE, course.getCode());
             courseObject.put(COURSE_DESCRIPTION, course.getDescription());
