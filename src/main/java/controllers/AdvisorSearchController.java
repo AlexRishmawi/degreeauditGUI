@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 
 import aisle.App;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -88,7 +89,12 @@ public class AdvisorSearchController implements Initializable{
     private Button createViewDetailsButton(Student student) {
         Button viewButton = new Button("View Details");
         viewButton.setStyle("-fx-background-color: #73000a; -fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold; -fx-border-radius: 5; -fx-padding: 5 10 5 10;");
-        viewButton.setOnAction(event -> handleViewDetails(student));
+        viewButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                handleViewDetails(student);
+            }
+        });
         return viewButton;
     }
 
@@ -96,7 +102,7 @@ public class AdvisorSearchController implements Initializable{
         try {
             System.out.println("View details for: " + student.getFirstName());
             DegreeWork.getInstance().setCurrentStudent(student.getID());
-            App.setRoot("student_dashboard_page");
+            App.setRoot("landing_page");
         } catch (IOException e) {
             e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR, "Cannot load the student details page.");

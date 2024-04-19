@@ -10,8 +10,12 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.StackedBarChart;
+import javafx.scene.chart.XYChart;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
@@ -26,6 +30,15 @@ public class StudentDashboardController implements Initializable{
 
     @FXML
     private Label ID;
+
+    @FXML
+    private Label advisorEmail;
+
+    @FXML
+    private Label advisorName;
+
+    @FXML
+    private Button appointmentButton;
 
     @FXML
     private Label classLevel;
@@ -67,7 +80,7 @@ public class StudentDashboardController implements Initializable{
     private StackPane stackPane;
 
     @FXML
-    private StackedBarChart<?, ?> stackedProgress;
+    private StackedBarChart<Number, String> stackedProgress;
 
     @FXML
     private Label studentName;
@@ -85,10 +98,16 @@ public class StudentDashboardController implements Initializable{
         App.setRoot("semester_plan_page");
     }
 
-    private void setupPieChart() {
-        DegreeWork degreeWork = DegreeWork.getInstance();
+    @FXML
+    void notSetupClicked(ActionEvent event) {
+        System.out.println("Not setup clicked");
+    }
+    
+    DegreeWork degreeWork = DegreeWork.getInstance();
         
-        Student student = degreeWork.getCurrentUser().isStudent() ? (Student) degreeWork.getCurrentUser() : degreeWork.getCurrentStudent();
+    Student student = degreeWork.getCurrentUser().isStudent() ? (Student) degreeWork.getCurrentUser() : degreeWork.getCurrentStudent();
+
+    private void setupPieChart() {
     
         ObservableList <PieChart.Data> pieChartData = FXCollections.observableArrayList(
             new PieChart.Data("Completed", student.getCompletedCourse().size()),
@@ -101,21 +120,43 @@ public class StudentDashboardController implements Initializable{
         pieChart.setLabelsVisible(false);
     }
 
+    private void setupStackedBarChart() {
+        CategoryAxis yAxis = new CategoryAxis();
+        NumberAxis xAxis = new NumberAxis();
+
+        yAxis.getStyleClass().add("axis-label");
+        xAxis.getStyleClass().add("axis-label");
+        
+        XYChart.Series<Number, String> series1 = new XYChart.Series<>();
+        series1.setName("Category 1");
+        series1.getData().add(new XYChart.Data<>(50, "Course 1"));
+        series1.getData().add(new XYChart.Data<>(20, "Course 2"));
+        series1.getData().add(new XYChart.Data<>(30, "Course 3"));
+        series1.getData().add(new XYChart.Data<>(10, "Course 4"));
+
+        XYChart.Series<Number, String> series2 = new XYChart.Series<>();
+        series2.setName("Category 2");
+        series2.getData().add(new XYChart.Data<>(50, "Course 1"));
+        series2.getData().add(new XYChart.Data<>(80, "Course 2"));
+        series2.getData().add(new XYChart.Data<>(70, "Course 3"));
+        series2.getData().add(new XYChart.Data<>(90, "Course 4"));
+
+        stackedProgress.getData().addAll(series1, series2);
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
         headerShadow.widthProperty().bind(stackPane.widthProperty());
         header.widthProperty().bind(stackPane.widthProperty());
 
-        DegreeWork degreeWork = DegreeWork.getInstance();
-        
-        Student student = degreeWork.getCurrentUser().isStudent() ? (Student) degreeWork.getCurrentUser() : degreeWork.getCurrentStudent();
 
         if(student == null) {
             System.out.println("Student is null");
         }
 
         setupPieChart();
+        setupStackedBarChart();
 
         studentName.setText(student.getFirstName() + " " + student.getLastName());
         classLevel.setText(student.getLevel().toString());
@@ -125,5 +166,7 @@ public class StudentDashboardController implements Initializable{
         degreeLabel.setText(student.getDegree().getDegreeType());
         majorLabel.setText(student.getDegree().toString());
 
+        advisorName.setText(student.getAdvisor().getFirstName() + " " + student.getAdvisor().getLastName());
+        advisorEmail.setText(student.getAdvisor().getEmail());
     }
 }
