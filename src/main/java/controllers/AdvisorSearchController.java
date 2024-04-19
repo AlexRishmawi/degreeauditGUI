@@ -57,12 +57,12 @@ public class AdvisorSearchController implements Initializable{
     void searchClicked(ActionEvent event) {
         String searchText = advisorSearch.getText();
 
-    DegreeWork degreeWork = DegreeWork.getInstance();
-    if (degreeWork.getCurrentUser().isStudent()) {
-        return;
-    }
+        DegreeWork degreeWork = DegreeWork.getInstance();
+        if (degreeWork.getCurrentUser().isStudent()) {
+            return;
+        }
 
-    ArrayList<Student> searchedStudents = degreeWork.advisorSearchStudents(searchText);
+        ArrayList<Student> searchedStudents = degreeWork.advisorSearchStudents(searchText);
         studentList.getChildren().clear();
         for (Student student : searchedStudents) {
             HBox hbox = new HBox(10); // 10 is the spacing between elements in the HBox

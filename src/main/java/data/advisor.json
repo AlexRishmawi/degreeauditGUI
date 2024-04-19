@@ -20,5 +20,15 @@
       "password": "hbuwerfkj",
       "studentList": [],
       "isAdmin": "true"
+    },
+    {
+      "id": "4785470c-0127-4944-b7f2-96bb6d2ffab9",
+      "type": "Advisor",
+      "firstName": "Jane",
+      "lastName": "Doe",
+      "email": "ta",
+      "password": "ta",
+      "studentList": [],
+      "isAdmin": "true"
     }
 ]
