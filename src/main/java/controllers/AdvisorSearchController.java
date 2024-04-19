@@ -17,7 +17,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
@@ -27,7 +26,6 @@ import javafx.scene.shape.Rectangle;
 
 import model.DegreeWork;
 import model.Student;
-import model.Advisor;
 
 public class AdvisorSearchController implements Initializable{
 
