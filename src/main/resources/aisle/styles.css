@@ -7,7 +7,6 @@
 .button {
     -fx-background-color: #73000A;
     -fx-text-fill: white;
-    
 }
 
 .backButton {
@@ -28,3 +27,5 @@
 .chart-legend {
     -fx-font-size: 8px;
 }
+
+

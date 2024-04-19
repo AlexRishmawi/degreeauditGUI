@@ -4,7 +4,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.image.Image?>
@@ -13,9 +12,13 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdvisorSearchController">
-   <VBox fx:id="studentList" layoutY="88.0" prefHeight="631.0" prefWidth="1280.0" />
+   <VBox fx:id="studentList" layoutY="88.0" prefHeight="631.0" prefWidth="1280.0">
+      <children>
+         <StackPane alignment="CENTER_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="36.0" prefWidth="1286.0" />
+      </children></VBox>
     <StackPane fx:id="stackPane" prefHeight="49.0" prefWidth="1280.0" AnchorPane.bottomAnchor="671.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <children>
          <Rectangle id="header" fx:id="headerShadow" fill="#73000a" height="46.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1280.0" StackPane.alignment="TOP_CENTER">
@@ -32,6 +35,11 @@
                     <Insets left="7.0" top="9.0" />
                 </StackPane.margin>
             </ImageView>
+         <Rectangle fill="#73000a" height="27.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="27.0" StackPane.alignment="TOP_RIGHT">
+            <StackPane.margin>
+               <Insets right="5.0" top="7.0" />
+            </StackPane.margin>
+         </Rectangle>
             <MenuButton fx:id="menuButton" mnemonicParsing="false" prefHeight="23.0" prefWidth="69.0" styleClass="menuButton" StackPane.alignment="TOP_RIGHT">
                 <items>
                     <MenuItem id="menu-items" mnemonicParsing="false" text="Log Out" />
@@ -47,11 +55,6 @@
                     <Insets />
                 </StackPane.margin>
             </MenuButton>
-         <Rectangle fill="#73000a" height="27.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="27.0" StackPane.alignment="TOP_RIGHT">
-            <StackPane.margin>
-               <Insets right="5.0" top="7.0" />
-            </StackPane.margin>
-         </Rectangle>
          <ImageView fitHeight="32.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_RIGHT">
             <image>
                <Image url="@assests/img/User-avatar.svg.png" />
@@ -62,34 +65,34 @@
          </ImageView>
         </children>
     </StackPane>
-   <SplitPane dividerPositions="0.6, 0.5" layoutY="46.0" prefHeight="36.0" prefWidth="1280.0" AnchorPane.topAnchor="46.0">
-     <items>
-       <AnchorPane id="searchheader" layoutX="20.0" layoutY="46.0" minHeight="0.0" minWidth="0.0" prefHeight="45.0" prefWidth="334.0">
+   <StackPane prefHeight="43.0" prefWidth="1280.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="50.0">
+      <children>
+       <AnchorPane id="searchheader" minHeight="0.0" minWidth="0.0" prefHeight="45.0" prefWidth="334.0">
             <children>
-               <TextField id="advisorSearchBar" fx:id="advisorSearch" prefHeight="36.0" prefWidth="768.0" promptText="Please Input">
+               <TextField id="advisorSearchBar" fx:id="advisorSearch" layoutX="-3.0" prefHeight="32.0" prefWidth="771.0" promptText="Search by First Name, Last Name, or USC ID" style="-fx-border-color: #73000a; -fx-border-width: 2; -fx-border-radius: 5;">
                   <opaqueInsets>
                      <Insets left="5.0" />
                   </opaqueInsets>
+                  <font>
+                     <Font size="19.0" />
+                  </font>
                </TextField>
             </children>
+            <StackPane.margin>
+               <Insets left="5.0" />
+            </StackPane.margin>
          </AnchorPane>
-       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="45.0" prefWidth="653.0" />
-         <StackPane alignment="CENTER_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="36.0" prefWidth="1286.0">
+       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="43.0" prefWidth="796.0">
             <children>
-               <Button id="advisorSearchButton" fx:id="advisorSearchButton" mnemonicParsing="false" onAction="#searchClicked" prefHeight="36.0" prefWidth="36.0" StackPane.alignment="CENTER_LEFT">
-                  <StackPane.margin>
-                     <Insets left="5.0" />
-                  </StackPane.margin>
-                  <graphic>
-                     <ImageView id="advisorsearchButton" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                           <Image url="@assests/img/searchButton.png" />
-                        </image>
-                     </ImageView>
-                  </graphic>
+               <Button id="advisorSearchButton" fx:id="advisorSearchButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#searchClicked" prefHeight="36.0" prefWidth="94.0" style="-fx-border-color: #73000a; -fx-border-width: 2; -fx-background-color: #73000a;" text="Search" textFill="WHITE">
+                  <font>
+                     <Font name="System Bold" size="19.0" />
+                  </font>
                </Button>
             </children>
-         </StackPane>
-     </items>
-   </SplitPane>
+            <StackPane.margin>
+               <Insets left="775.0" right="5.0" />
+            </StackPane.margin></AnchorPane>
+      </children>
+   </StackPane>
 </AnchorPane>
