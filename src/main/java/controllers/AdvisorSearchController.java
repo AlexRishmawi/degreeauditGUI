@@ -10,6 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
@@ -69,19 +70,11 @@ public class AdvisorSearchController implements Initializable{
             hbox.setStyle("-fx-background-color: white; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 5;");
             hbox.setPadding(new Insets(5, 10, 5, 10)); // Apply padding inside the HBox
             hbox.setPrefWidth(Double.MAX_VALUE); // Ensure HBox stretches to full width
-
+            hbox.setAlignment(javafx.geometry.Pos.CENTER_LEFT);
             Label studentLabel = new Label(student.getFirstName() + " " + student.getLastName() + "\n" + student.getStudentID());
-            Button viewButton = new Button("View Details");
+            Button viewButton = createViewDetailsButton(student);
             studentLabel.setStyle("-fx-font-size: 20px; -fx-font-weight: bold; -fx-margin: 10;");
-            viewButton.setStyle("-fx-background-color: #73000a; -fx-text-fill: white; -fx-font-size: 20x; -fx-font-weight: bold; -fx-border-radius: 5; -fx-padding: 5 10 5 10;");
-            viewButton.setOnAction(e -> {
-                try {
-                    degreeWork.setCurrentStudent(student.getID());
-                    App.setRoot("student_dashboard_page");
-                } catch (IOException e1) {
-                    e1.printStackTrace(); // Consider showing an error message or logging this exception more visibly
-                }
-            });
+            
 
             Region spacer = new Region();
             HBox.setHgrow(spacer, Priority.ALWAYS); // Makes the spacer expandable
@@ -92,6 +85,25 @@ public class AdvisorSearchController implements Initializable{
         }
     }
     
+    private Button createViewDetailsButton(Student student) {
+        Button viewButton = new Button("View Details");
+        viewButton.setStyle("-fx-background-color: #73000a; -fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold; -fx-border-radius: 5; -fx-padding: 5 10 5 10;");
+        viewButton.setOnAction(event -> handleViewDetails(student));
+        return viewButton;
+    }
+
+    private void handleViewDetails(Student student) {
+        try {
+            System.out.println("View details for: " + student.getFirstName());
+            DegreeWork.getInstance().setCurrentStudent(student.getID());
+            App.setRoot("student_dashboard_page");
+        } catch (IOException e) {
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Cannot load the student details page.");
+            alert.showAndWait();
+        }
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         headerShadow.widthProperty().bind(stackPane.widthProperty());

@@ -299,8 +299,9 @@ public class DegreeWork {
         if(name != null && name != "") {
             for(User user : userList.getAllUsers()) {
                 if(user.isStudent()) {
-                    if (user.getFirstName().startsWith(name) || user.getLastName().startsWith(name)
-                        || ((Student) user).getStudentID().startsWith(name)) {
+                    if (user.getFirstName().toLowerCase().startsWith(name.toLowerCase())
+                        || user.getLastName().toLowerCase().startsWith(name.toLowerCase())
+                        || ((Student) user).getStudentID().toLowerCase().startsWith(name.toLowerCase())) {
                         returnedList.add((Student) user);
                     }
                 }
