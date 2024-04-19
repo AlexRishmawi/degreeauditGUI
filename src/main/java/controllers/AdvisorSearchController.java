@@ -86,6 +86,7 @@ public class AdvisorSearchController implements Initializable{
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        headerShadow.widthProperty().bind(stackPane.widthProperty());
+        header.widthProperty().bind(stackPane.widthProperty());
     }
 }
