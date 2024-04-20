@@ -8,67 +8,85 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LandingController">
+<AnchorPane fx:id="parent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LandingController">
    <children>
-      <BorderPane prefHeight="720.0" prefWidth="1280.0">
-         <left>
-            <VBox fx:id="leftSection" maxWidth="550.0" minWidth="200" prefHeight="720.0" prefWidth="550.0" style="-fx-background-color: #73000a;" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.topAnchor="0">
-                <effect>
-                    <DropShadow color="#00000066" offsetX="5" offsetY="5" radius="10" spread="0.12" />
-                </effect>
-                <children>
-                  <ImageView fitHeight="260.0" fitWidth="401.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@assests/img/usc_logo_centered_RGB_W.png" />
-                     </image>
-                     <VBox.margin>
-                        <Insets left="81.0" top="200.0" />
-                     </VBox.margin>
-                  </ImageView>
-                    <Text fill="WHITE" text="Copyright © 2024 Aisle Devs" textAlignment="CENTER" VBox.vgrow="ALWAYS">
-                        <VBox.margin>
-                            <Insets left="200.0" top="280.0" />
-                        </VBox.margin>
-                        <font>
-                            <Font name="Segoe UI" size="12.0" />
-                        </font>
-                    </Text>
-                </children>
-            </VBox>
-         </left>
+      <BorderPane prefHeight="720.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
          <right>
-            <HBox prefHeight="720.0" prefWidth="730.0" BorderPane.alignment="CENTER">
+            <HBox fx:id="Hbox" prefHeight="720.0" prefWidth="730.0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="tologin" mnemonicParsing="false" onAction="#onLoginClicked" prefHeight="49.0" prefWidth="234.0" text="Log In">
-                     <font>
-                        <Font name="Calibri Bold" size="27.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets left="268.0" top="270.0" />
-                     </HBox.margin>
-                  </Button>
-                  <Button fx:id="tosignup" mnemonicParsing="false" onAction="#onSignupClicked" prefHeight="49.0" prefWidth="234.0" text="Sign Up" HBox.hgrow="ALWAYS">
-                     <HBox.margin>
-                        <Insets left="-234.0" top="333.0" />
-                     </HBox.margin>
-                     <font>
-                        <Font name="Calibri Bold" size="27.0" />
-                     </font>
-                  </Button>
-                  <Text fill="#73000a" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome" textAlignment="CENTER" wrappingWidth="202.35416793823242" HBox.hgrow="ALWAYS">
-                     <HBox.margin>
-                        <Insets left="-219.0" top="200.0" />
-                     </HBox.margin>
-                     <font>
-                        <Font name="Calibri Bold" size="34.0" />
-                     </font>
-                  </Text>
-               </children></HBox>
+                  <StackPane fx:id="stackPane" prefHeight="720.0" prefWidth="761.0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
+                     <children>
+                        <Button fx:id="tologin" mnemonicParsing="false" onAction="#onLoginClicked" prefHeight="49.0" prefWidth="234.0" text="Log In">
+                           <font>
+                              <Font name="Calibri Bold" size="27.0" />
+                           </font>
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                           <StackPane.margin>
+                              <Insets bottom="60.0" />
+                           </StackPane.margin>
+                        </Button>
+                        <Button fx:id="tosignup" mnemonicParsing="false" onAction="#onSignupClicked" prefHeight="49.0" prefWidth="234.0" text="Sign Up" StackPane.alignment="CENTER">
+                           <font>
+                              <Font name="Calibri Bold" size="27.0" />
+                           </font>
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                           <StackPane.margin>
+                              <Insets bottom="-70.0" />
+                           </StackPane.margin>
+                        </Button>
+                        <Text fx:id="welcome" fill="#73000a" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome" textAlignment="CENTER" wrappingWidth="202.35416793823242" StackPane.alignment="CENTER">
+                           <font>
+                              <Font name="Calibri Bold" size="34.0" />
+                           </font>
+                           <StackPane.margin>
+                              <Insets bottom="190.0" />
+                           </StackPane.margin>
+                           <effect>
+                              <DropShadow height="41.52" radius="22.457500000000003" width="50.31" />
+                           </effect>
+                        </Text>
+                     </children>
+                  </StackPane>
+               </children>
+            </HBox>
          </right>
+         <left>
+            <HBox fx:id="HboxLeft" prefHeight="720.0" prefWidth="550.0" style="-fx-background-color: #73000a;" BorderPane.alignment="CENTER">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <children>
+                  <StackPane fx:id="stackPaneLeft" prefHeight="788.0" prefWidth="550.0">
+                     <children>
+                        <ImageView fx:id="logo" fitHeight="260.0" fitWidth="401.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@assests/img/usc_logo_centered_RGB_W.png" />
+                           </image>
+                           <StackPane.margin>
+                              <Insets bottom="100.0" />
+                           </StackPane.margin>
+                        </ImageView>
+                        <Text fill="WHITE" text="Copyright © 2024 Aisle Devs" textAlignment="CENTER" StackPane.alignment="BOTTOM_CENTER">
+                           <font>
+                              <Font name="Segoe UI" size="12.0" />
+                           </font>
+                           <StackPane.margin>
+                              <Insets bottom="20.0" />
+                           </StackPane.margin>
+                        </Text>
+                     </children>
+                  </StackPane>
+               </children>
+            </HBox>
+         </left>
       </BorderPane>
    </children>
 </AnchorPane>
