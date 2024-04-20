@@ -49,9 +49,6 @@
                            <StackPane.margin>
                               <Insets bottom="190.0" />
                            </StackPane.margin>
-                           <effect>
-                              <DropShadow height="41.52" radius="22.457500000000003" width="50.31" />
-                           </effect>
                         </Text>
                      </children>
                   </StackPane>
