@@ -99,8 +99,9 @@ public class StudentDashboardController implements Initializable{
     }
 
     @FXML
-    void notSetupClicked(ActionEvent event) {
+    void notSetupClicked(ActionEvent event) throws IOException {
         System.out.println("Not setup clicked");
+        App.setRoot("student_search_page");
     }
     
     DegreeWork degreeWork = DegreeWork.getInstance();

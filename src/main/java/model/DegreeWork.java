@@ -317,6 +317,22 @@ public class DegreeWork {
         return returnedList;
     }
 
+    public ArrayList<Course> studentCourseSearch(String name) {
+        ArrayList<Course> returnedList = new ArrayList<>();
+        if(name != null && name != "") {
+            for(Course course : courseList.getAllCourse()) {
+                if (course.getCourseName().toLowerCase().startsWith(name.toLowerCase())
+                    || course.getSubject().toLowerCase().startsWith(name.toLowerCase())
+                    || course.getCode().toLowerCase().startsWith(name.toLowerCase())) {
+                    returnedList.add(course);
+                }
+            }
+            return returnedList;
+        }
+
+        return courseList.getAllCourse();
+    }
+
     // ----- Admin Method -----
     public boolean addCourse(String subject, String code, String name, String description, int credit,
         ArrayList<Season> semester, ArrayList<Prerequisites> prerequisites) 
