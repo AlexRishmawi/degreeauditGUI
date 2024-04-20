@@ -1,11 +1,9 @@
 package controllers;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import aisle.App;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -15,6 +13,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -25,7 +24,6 @@ import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import model.Course;
 import model.DegreeWork;
-import model.Course;
 
 public class CourseSearchController implements Initializable{
 
@@ -51,39 +49,61 @@ public class CourseSearchController implements Initializable{
     private StackPane stackPane;
 
     @FXML
-    private VBox courseList;
+    private VBox container;
 
     @FXML
-    void searchClicked(ActionEvent event) {
-        String searchText = courseSearch.getText();
+    private ScrollPane myScrollPane;
 
-        DegreeWork degreeWork = DegreeWork.getInstance();
-        if (!degreeWork.getCurrentUser().isStudent()) {
-            return;
-        }
+    @Override
+public void initialize(URL location, ResourceBundle resources) {
+    headerShadow.widthProperty().bind(stackPane.widthProperty());
+    header.widthProperty().bind(stackPane.widthProperty());
+    container.setFillWidth(true); // Ensuring that the VBox inside the ScrollPane expands to fill the width.
+}
 
-        ArrayList<Course> searchedCourses = degreeWork.studentCourseSearch(searchText);
-        courseList.getChildren().clear();
-        for (Course course : searchedCourses) {
-            HBox hbox = new HBox(10); // 10 is the spacing between elements in the HBox
-            hbox.setStyle("-fx-background-color: white; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 5;");
-            hbox.setPadding(new Insets(5, 10, 5, 10)); // Apply padding inside the HBox
-            hbox.setPrefWidth(Double.MAX_VALUE); // Ensure HBox stretches to full width
-            hbox.setAlignment(javafx.geometry.Pos.CENTER_LEFT);
-            Label courseLabel = new Label(course.getCourseName() + "\nCredit Hours: " + course.getCreditHours());
-            Button viewButton = createViewDetailsButton(course);
-            courseLabel.setStyle("-fx-font-size: 20px; -fx-font-weight: bold; -fx-margin: 10;");
-            
+@FXML
+void searchClicked(ActionEvent event) {
+    String searchText = courseSearch.getText();
 
-            Region spacer = new Region();
-            HBox.setHgrow(spacer, Priority.ALWAYS); // Makes the spacer expandable
-
-            hbox.getChildren().addAll(courseLabel, spacer, viewButton);
-            VBox.setMargin(hbox, new Insets(5)); // Uniform margin around the HBox
-            courseList.getChildren().add(hbox);
-        }
+    DegreeWork degreeWork = DegreeWork.getInstance();
+    if(!degreeWork.getCurrentUser().isStudent()){
+        return;
     }
-    
+
+    ArrayList<Course> searchedCourses = degreeWork.studentCourseSearch(searchText);
+    container.getChildren().clear();
+    for (Course course : searchedCourses) {
+        HBox hbox = new HBox(10);
+        hbox.setStyle("-fx-background-color: white; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 5;");
+        hbox.setPadding(new Insets(5, 10, 5, 10)); // Apply padding inside the HBox
+        hbox.setPrefWidth(Double.MAX_VALUE); // Ensure HBox stretches to full width
+        hbox.setAlignment(javafx.geometry.Pos.CENTER_LEFT);
+
+        Label courseLabel = new Label(course.getCourseName());
+        Button viewButton = createViewDetailsButton(course);
+        courseLabel.setStyle("-fx-font-size: 20px; -fx-font-weight: bold; -fx-margin: 10;");
+
+        Region spacer = new Region();
+        HBox.setHgrow(spacer, Priority.ALWAYS);
+
+        hbox.getChildren().addAll(courseLabel, new Region(), viewButton);
+        VBox.setMargin(hbox, new Insets(5));
+        container.getChildren().add(hbox);
+    }
+}
+
+private void handleViewDetails(Course course) {
+    try {
+        System.out.println("View details for: " + course.getCourseName());
+        // Implement navigation logic
+    } catch (Exception e) {
+        e.printStackTrace();
+        Alert alert = new Alert(Alert.AlertType.ERROR, "Error loading the details.");
+        alert.showAndWait();
+    }
+}
+
+   
     private Button createViewDetailsButton(Course course) {
         Button viewButton = new Button("View Details");
         viewButton.setStyle("-fx-background-color: #73000a; -fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold; -fx-border-radius: 5; -fx-padding: 5 10 5 10;");
@@ -96,20 +116,5 @@ public class CourseSearchController implements Initializable{
         return viewButton;
     }
 
-    private void handleViewDetails(Course course) {
-        try {
-            System.out.println("View details for: " + course.getCourseName());
-            App.setRoot("landing_page");
-        } catch (IOException e) {
-            e.printStackTrace();
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Cannot load the course details page.");
-            alert.showAndWait();
-        }
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        headerShadow.widthProperty().bind(stackPane.widthProperty());
-        header.widthProperty().bind(stackPane.widthProperty());
-    }
+    
 }
