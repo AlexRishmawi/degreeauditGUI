@@ -1,7 +1,5 @@
 package controllers;
 
-import aisle.App;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -19,8 +17,6 @@ import javafx.scene.layout.VBox;
 import javafx.scene.control.ListView;
 import model.DegreeWork;
 import model.Semester;
-import model.Student;
-import model.Advisor;
 import model.Course;
 
 public class SemesterPlanController implements Initializable {
