@@ -1,4 +1,5 @@
 package model;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -28,9 +29,9 @@ public class DataWriter extends DataConstants {
 
             allDegreeObject.add(degreeObject);
         }
-
-        // writeToFile(COURSE_FILE_NAME, allDegreeObject);
+        
         writeToFile("./src/main/java/data/degree_testing.json", allDegreeObject);
+        // writeToFile(DEGREE_FILE_NAME, allDegreeObject);
     }
 
     @SuppressWarnings("unchecked")
@@ -39,6 +40,7 @@ public class DataWriter extends DataConstants {
         for (Course course : allCourses) {
             HashMap<String, Object> courseObject = new HashMap<>();
             courseObject.put(COURSE_ID, course.getID().toString());
+            courseObject.put(COURSE_NAME, course.getCourseName());
             courseObject.put(COURSE_SUBJECT, course.getSubject());
             courseObject.put(COURSE_CODE, course.getCode());
             courseObject.put(COURSE_DESCRIPTION, course.getDescription());
@@ -56,7 +58,7 @@ public class DataWriter extends DataConstants {
             allCourseObject.add(new JSONObject(courseObject));
         }
 
-        writeToFile("./src/main/java/data/course_testing.json", allCourseObject);
+        writeToFile("./src/main/java/data/course_testing.json", allCourseObject); 
         // writeToFile(COURSE_FILE_NAME, allCourseObject);
     }
 
@@ -112,11 +114,7 @@ public class DataWriter extends DataConstants {
             notesJson.add(note);
         }
         map.put(STUDENT_NOTES, notesJson);
-
-
         map.put(STUDENT_DEGREE_ID, student.getDegree().getID().toString());
-
-
         map.put(STUDENT_INSTITUTE_GPA, student.getInstituteGPA());
         map.put(STUDENT_PROGRAM_GPA, student.getProgramGPA());
         map.put(STUDENT_STATUS, student.getStatus());
@@ -188,7 +186,6 @@ public class DataWriter extends DataConstants {
     }
 
     private static void writeToFile(String filePath, JSONArray jsonArray) {
-        // String prettyPrintedJsonString = prettyPrintJsonArray(jsonArray);
         try (FileWriter file = new FileWriter(filePath)) {
             file.write(jsonArray.toJSONString());
             file.flush();

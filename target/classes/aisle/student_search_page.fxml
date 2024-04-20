@@ -15,16 +15,12 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdvisorSearchController">
-    <VBox fx:id="studentList" AnchorPane.topAnchor="100.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.bottomAnchor="0.0">
-      <children>
-         <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS">
-           <content>
-             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
-           </content>
-         </ScrollPane>
-      </children>
-   </VBox>
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CourseSearchController">
+    <ScrollPane fx:id="myScrollPane" fitToWidth="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+        <content>
+            <VBox fx:id="container" spacing="10" />
+        </content>
+    </ScrollPane>
     <StackPane fx:id="stackPane" prefHeight="49.0" prefWidth="1280.0" AnchorPane.bottomAnchor="671.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <children>
          <Rectangle id="header" fx:id="headerShadow" fill="#73000a" height="46.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1280.0" StackPane.alignment="TOP_CENTER">
@@ -75,7 +71,7 @@
       <children>
        <AnchorPane id="searchheader" minHeight="0.0" minWidth="0.0" prefHeight="45.0" prefWidth="334.0">
             <children>
-               <TextField id="advisorSearchBar" fx:id="advisorSearch" layoutX="-3.0" prefHeight="32.0" prefWidth="771.0" promptText="Search by First Name, Last Name, or USC ID" style="-fx-border-color: #73000a; -fx-border-width: 2; -fx-border-radius: 5;">
+               <TextField id="courseSearchBar" fx:id="courseSearch" layoutX="-3.0" prefHeight="32.0" prefWidth="771.0" promptText="Search by First Name, Last Name, or USC ID" style="-fx-border-color: #73000a; -fx-border-width: 2; -fx-border-radius: 5;">
                   <opaqueInsets>
                      <Insets left="5.0" />
                   </opaqueInsets>
@@ -90,7 +86,7 @@
          </AnchorPane>
        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="43.0" prefWidth="796.0">
             <children>
-               <Button id="advisorSearchButton" fx:id="advisorSearchButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#searchClicked" prefHeight="36.0" prefWidth="94.0" style="-fx-border-color: #73000a; -fx-border-width: 2; -fx-background-color: #73000a;" text="Search" textFill="WHITE">
+               <Button id="courseSearchButton" fx:id="courseSearchButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#searchClicked" prefHeight="36.0" prefWidth="94.0" style="-fx-border-color: #73000a; -fx-border-width: 2; -fx-background-color: #73000a;" text="Search" textFill="WHITE">
                   <font>
                      <Font name="System Bold" size="19.0" />
                   </font>

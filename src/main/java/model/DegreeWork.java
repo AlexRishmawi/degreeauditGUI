@@ -91,8 +91,6 @@ public class DegreeWork {
         this.userList.addUser(tempStudent);
         this.degreeList.addDegree(degree);
         setCurrentUser(tempStudent);
-        this.userList.writeToFile();
-        this.degreeList.writeToFile();
         return tempStudent;
     }
 
@@ -119,6 +117,15 @@ public class DegreeWork {
             return ((Advisor) this.currentUser).getCurrentStudent().toString();
         }
         return "No information to display";
+    }
+
+    public ArrayList<Semester> getSemesterPlan() {
+        if (this.currentUser instanceof Student) {
+            return ((Student) this.currentUser).getSemesterPlans();
+        } else if (this.currentUser instanceof Advisor) {
+            return ((Advisor) this.currentUser).getCurrentStudent().getSemesterPlans();
+        }
+        return null;
     }
 
     public String displayEightSemesterPlan() {
@@ -292,8 +299,9 @@ public class DegreeWork {
         if(name != null && name != "") {
             for(User user : userList.getAllUsers()) {
                 if(user.isStudent()) {
-                    if (user.getFirstName().startsWith(name) || user.getLastName().startsWith(name)
-                        || ((Student) user).getStudentID().startsWith(name)) {
+                    if (user.getFirstName().toLowerCase().startsWith(name.toLowerCase())
+                        || user.getLastName().toLowerCase().startsWith(name.toLowerCase())
+                        || ((Student) user).getStudentID().toLowerCase().startsWith(name.toLowerCase())) {
                         returnedList.add((Student) user);
                     }
                 }
@@ -307,6 +315,22 @@ public class DegreeWork {
             }
         }
         return returnedList;
+    }
+
+    public ArrayList<Course> studentCourseSearch(String name) {
+        ArrayList<Course> returnedList = new ArrayList<>();
+        if(name != null && name != "") {
+            for(Course course : courseList.getAllCourse()) {
+                if (course.getCourseName().toLowerCase().startsWith(name.toLowerCase())
+                    || course.getSubject().toLowerCase().startsWith(name.toLowerCase())
+                    || course.getCode().toLowerCase().startsWith(name.toLowerCase())) {
+                    returnedList.add(course);
+                }
+            }
+            return returnedList;
+        }
+
+        return courseList.getAllCourse();
     }
 
     // ----- Admin Method -----

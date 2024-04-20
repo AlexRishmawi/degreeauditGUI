@@ -7,7 +7,10 @@
 .button {
     -fx-background-color: #73000A;
     -fx-text-fill: white;
-    
+}
+
+.vbox {
+    -fx-background-color: #73000A;
 }
 
 .backButton {
@@ -15,11 +18,20 @@
 }
 
 .menuButton {
-    -fx-background-color:#73000A;
+    -fx-background-color: #ffffff;
 }
 
 .menu-item {
-    -fx-background-color: #73000A;
-    -fx-text-fill: white;
+    -fx-background-color: #73000a;
     -fx-color: #73000A;
+    -fx-font-size: 12pt;
+    -fx-text-fill: white;
+}
+
+.chart-legend {
+    -fx-font-size: 8px;
+}
+
+.axis-label {
+    -fx-font-size: 8px;
 }
