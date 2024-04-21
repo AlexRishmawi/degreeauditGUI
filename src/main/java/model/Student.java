@@ -255,7 +255,6 @@ public class Student extends User {
             currYear = 2024;
         }
 
-
         int creditLimitLeft = 18;
         for (int level = 1; level <= 8; level++) {
             for (int i = queueCourse.size() - 1; i >= 0; i--) {
@@ -271,15 +270,15 @@ public class Student extends User {
                     semesterCourse.add(course);
                     queueCourse.remove(course);
                 } else {
-                    Semester tempSemester = new Semester(currSeason, currYear, 18 - creditLimitLeft, new ArrayList<>(semesterCourse));
-                    this.semestersPlan.add(tempSemester);
-
                     if (currSeason.equalsIgnoreCase("fall")) {
                         currSeason = "Spring";
                         currYear += 1;
                     } else {
                         currSeason = "Fall";
-                    } 
+                    }
+                    
+                    Semester tempSemester = new Semester(currSeason, currYear, 18 - creditLimitLeft, new ArrayList<>(semesterCourse));
+                    this.semestersPlan.add(tempSemester);
        
                     semesterCourse.clear();
                     creditLimitLeft = 18;
