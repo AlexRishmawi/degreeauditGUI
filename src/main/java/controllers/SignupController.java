@@ -3,7 +3,6 @@ package controllers;
 import java.io.IOException;
 
 import aisle.App;
-import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

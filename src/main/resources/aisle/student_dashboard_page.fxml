@@ -23,11 +23,6 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.StudentDashboardController">
-   <ImageView fitHeight="720.0" fitWidth="1280.0" opacity="0.13" pickOnBounds="true" preserveRatio="true" styleClass="axis-label">
-      <image>
-         <Image url="@../../../../../../../Pictures/Screenies/Screenshot%202024-04-18%20205230.png" />
-      </image>
-   </ImageView>
    <StackPane layoutX="499.0" layoutY="27.0" prefHeight="243.0" prefWidth="765.0">
       <children>
          <Rectangle arcHeight="25.0" arcWidth="25.0" fill="#ffffff00" height="274.0" opacity="0.51" stroke="#73000a" strokeWidth="3.0" width="762.0">
@@ -115,7 +110,7 @@
                <Insets left="40.0" top="78.0" />
             </StackPane.margin>
          </Text>
-         <Label fx:id="studentName" prefHeight="31.0" prefWidth="149.0" text="NAME" StackPane.alignment="CENTER_RIGHT">
+         <Label fx:id="studentName" prefHeight="31.0" prefWidth="149.0" StackPane.alignment="CENTER_RIGHT">
             <font>
                <Font name="Times New Roman Bold" size="15.0" />
             </font>
@@ -123,15 +118,15 @@
                <Insets top="15.0" />
             </StackPane.margin>
          </Label>
-         <Label fx:id="email" prefHeight="31.0" prefWidth="150.0" text="EMAIL" StackPane.alignment="CENTER_RIGHT">
+         <Label fx:id="email" prefHeight="31.0" prefWidth="150.0" StackPane.alignment="CENTER_RIGHT">
             <font>
                <Font name="Times New Roman Bold" size="15.0" />
             </font>
             <StackPane.margin>
-               <Insets top="138.0" />
+               <Insets bottom="-3.0" top="138.0" />
             </StackPane.margin>
          </Label>
-         <Label fx:id="ID" prefHeight="31.0" prefWidth="150.0" text="Level" StackPane.alignment="CENTER_RIGHT">
+         <Label fx:id="ID" prefHeight="31.0" prefWidth="150.0" StackPane.alignment="CENTER_RIGHT">
             <font>
                <Font name="Times New Roman Bold" size="15.0" />
             </font>
@@ -139,12 +134,12 @@
                <Insets top="78.0" />
             </StackPane.margin>
          </Label>
-         <Label fx:id="level" prefHeight="29.0" prefWidth="150.0" text="ID" StackPane.alignment="CENTER_RIGHT">
+         <Label fx:id="level" prefHeight="29.0" prefWidth="150.0" StackPane.alignment="CENTER_RIGHT">
             <font>
                <Font name="Times New Roman Bold" size="15.0" />
             </font>
             <StackPane.margin>
-               <Insets top="200.0" />
+               <Insets bottom="-5.0" top="200.0" />
             </StackPane.margin>
          </Label>
       </children>
@@ -181,7 +176,7 @@
                <Insets left="12.0" top="28.0" />
             </StackPane.margin>
          </Text>
-         <Label fx:id="advisorName" prefHeight="18.0" prefWidth="192.0" text="NAME" StackPane.alignment="TOP_CENTER">
+         <Label fx:id="advisorName" prefHeight="18.0" prefWidth="192.0" StackPane.alignment="TOP_CENTER">
             <font>
                <Font name="Times New Roman Bold" size="15.0" />
             </font>
@@ -189,7 +184,7 @@
                <Insets right="-50.0" top="44.0" />
             </StackPane.margin>
          </Label>
-         <Label fx:id="advisorEmail" prefHeight="18.0" prefWidth="192.0" text="EMAIL" StackPane.alignment="TOP_CENTER">
+         <Label fx:id="advisorEmail" prefHeight="18.0" prefWidth="192.0" StackPane.alignment="TOP_CENTER">
             <font>
                <Font name="Times New Roman Bold" size="15.0" />
             </font>
@@ -220,15 +215,7 @@
                <Font name="Times New Roman Bold" size="15.0" />
             </font>
             <StackPane.margin>
-               <Insets left="12.0" top="5.0" />
-            </StackPane.margin>
-         </Text>
-         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="College:" StackPane.alignment="BOTTOM_LEFT">
-            <font>
-               <Font name="Times New Roman Bold" size="15.0" />
-            </font>
-            <StackPane.margin>
-               <Insets bottom="32.0" left="12.0" />
+               <Insets left="12.0" top="14.0" />
             </StackPane.margin>
          </Text>
          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Major:" StackPane.alignment="CENTER_LEFT">
@@ -236,31 +223,23 @@
                <Font name="Times New Roman Bold" size="15.0" />
             </font>
             <StackPane.margin>
-               <Insets bottom="27.0" left="12.0" />
+               <Insets bottom="-15.0" left="12.0" />
             </StackPane.margin>
          </Text>
-         <Label fx:id="degreeLabel" prefHeight="20.0" prefWidth="225.0" text="DEGREE" textFill="#545454" StackPane.alignment="TOP_LEFT">
+         <Label fx:id="degreeLabel" prefHeight="20.0" prefWidth="225.0" textFill="#545454" StackPane.alignment="TOP_LEFT">
             <StackPane.margin>
-               <Insets left="12.0" top="23.0" />
+               <Insets left="12.0" top="37.0" />
             </StackPane.margin>
             <font>
                <Font name="Times New Roman Bold" size="17.0" />
             </font>
          </Label>
-         <Label fx:id="majorLabel" prefHeight="20.0" prefWidth="225.0" text="MAJOR" textFill="#545454">
+         <Label fx:id="majorLabel" prefHeight="20.0" prefWidth="225.0" textFill="#545454">
             <font>
                <Font name="Times New Roman Bold" size="17.0" />
             </font>
             <StackPane.margin>
-               <Insets top="12.0" />
-            </StackPane.margin>
-         </Label>
-         <Label fx:id="collegeLabel" prefHeight="20.0" prefWidth="225.0" text="COLLEGE" textFill="#545454" StackPane.alignment="BOTTOM_CENTER">
-            <font>
-               <Font name="Times New Roman Bold" size="17.0" />
-            </font>
-            <StackPane.margin>
-               <Insets bottom="12.0" />
+               <Insets top="62.0" />
             </StackPane.margin>
          </Label>
       </children>
