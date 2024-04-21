@@ -2,6 +2,8 @@ package controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 
 import aisle.App;
@@ -10,6 +12,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.PieChart;
@@ -20,10 +23,16 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
-
+import model.Course;
 import model.DegreeWork;
+import model.ElectiveCategory;
 import model.Student;
 
 public class StudentDashboardController implements Initializable{
@@ -84,6 +93,9 @@ public class StudentDashboardController implements Initializable{
 
     @FXML
     private Label studentName;
+
+    @FXML
+    private VBox degreeProgress;
     
     @FXML
     void logOutClicked(ActionEvent event) throws IOException{
@@ -148,27 +160,97 @@ public class StudentDashboardController implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        if(student instanceof Student) {
+            headerShadow.widthProperty().bind(stackPane.widthProperty());
+            header.widthProperty().bind(stackPane.widthProperty());
+            degreeProgress.setFillWidth(true);
 
-        headerShadow.widthProperty().bind(stackPane.widthProperty());
-        header.widthProperty().bind(stackPane.widthProperty());
+            if(student == null) {
+                System.out.println("Student is null");
+                return;
+            }
 
+            setupPieChart();
+            setupStackedBarChart();
 
-        if(student == null) {
-            System.out.println("Student is null");
+            studentName.setText(student.getFirstName() + " " + student.getLastName());
+            level.setText(student.getLevel().toString());
+            email.setText(student.getEmail());
+            ID.setText(student.getStudentID());
+
+            degreeLabel.setText(student.getDegree().getSubject());
+            majorLabel.setText(student.getDegree().toString());
+
+            advisorName.setText(student.getAdvisor().getFirstName() + " " + student.getAdvisor().getLastName());
+            advisorEmail.setText(student.getAdvisor().getEmail());
+
+            //Degree Progress
+        
+            //Major
+            degreeProgress.getChildren().clear();
+            HashMap<Course, Integer> majorCourses = ((Student) degreeWork.getCurrentUser()).getDegree().getMajorCourses();
+            
+            VBox sectionBox = new VBox(10);
+            sectionBox.setStyle("-fx-background-color: white; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 5;");
+            sectionBox.setPadding(new Insets(5, 10, 5, 10)); // Apply padding inside the HBox
+            sectionBox.setPrefWidth(Double.MAX_VALUE); // Ensure HBox stretches to full width
+            sectionBox.setAlignment(javafx.geometry.Pos.CENTER_LEFT);
+
+            Label sectionTitle = new Label("Major in " + student.getDegree().getSubject());
+            Line separater = new Line();
+
+            for(Course course : majorCourses.keySet()) {
+                HBox courseBox = new HBox(5);
+                if(student.getCompletedCourse().containsKey(course)) {
+                    courseBox.setStyle("-fx-background-color: green; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 5;");
+                } else {
+                    courseBox.setStyle("-fx-background-color: red; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 5;");
+                }
+
+                Region spacer = new Region();
+                HBox.setHgrow(spacer, Priority.ALWAYS);
+                
+                Label courseName = new Label(course.toStringCourseAbbr() + ": " + course.getCourseName());
+                Label courseCredits = new Label(Integer.toString(course.getCreditHours()));
+
+                courseBox.getChildren().addAll(courseName, spacer, courseCredits);
+                sectionBox.getChildren().addAll(courseBox);
+            }
+
+            VBox.setMargin(sectionBox, new Insets(5));
+
+            //Electives
+            VBox otherBox = new VBox(10);
+            otherBox.setStyle("-fx-background-color: white; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 5;");
+            otherBox.setPadding(new Insets(5, 10, 5, 10)); // Apply padding inside the HBox
+            otherBox.setPrefWidth(Double.MAX_VALUE); // Ensure HBox stretches to full width
+            otherBox.setAlignment(javafx.geometry.Pos.CENTER_LEFT);
+
+            Label otherTitle = new Label("Other Requirements");
+            
+            for(ElectiveCategory elective : student.getDegree().getElectiveList()) {
+                HBox electiveBox = new HBox(5);
+                
+                if(degreeWork.electiveCategoryCompleted(elective)) {
+                    electiveBox.setStyle("-fx-background-color: green; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 5;");
+                } else {
+                    electiveBox.setStyle("-fx-background-color: red; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 5;");
+                }
+
+                Region spacer = new Region();
+                HBox.setHgrow(spacer, Priority.ALWAYS);
+                
+                Label electiveName = new Label(elective.getType());
+                Label electiveCredits = new Label(Integer.toString(elective.getCreditsRequired()));
+
+                electiveBox.getChildren().addAll(electiveName, spacer, electiveCredits);
+                otherBox.getChildren().addAll(electiveBox);
+            }
+
+            degreeProgress.getChildren().addAll(sectionTitle, separater, sectionBox, new Line(), otherTitle, new Line(), otherBox);
+
+        } else {
+            return;
         }
-
-        setupPieChart();
-        setupStackedBarChart();
-
-        studentName.setText(student.getFirstName() + " " + student.getLastName());
-        level.setText(student.getLevel().toString());
-        email.setText(student.getEmail());
-        ID.setText(student.getStudentID());
-
-        degreeLabel.setText(student.getDegree().getSubject());
-        majorLabel.setText(student.getDegree().toString());
-
-        advisorName.setText(student.getAdvisor().getFirstName() + " " + student.getAdvisor().getLastName());
-        advisorEmail.setText(student.getAdvisor().getEmail());
     }
 }

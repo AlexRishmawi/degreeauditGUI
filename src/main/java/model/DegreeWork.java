@@ -272,6 +272,23 @@ public class DegreeWork {
         }
         return null;
     }
+
+    public boolean electiveCategoryCompleted(ElectiveCategory category) {
+        if(this.currentUser instanceof Student) {
+            HashMap<Course, String> complete = ((Student) this.getCurrentUser()).getCompletedCourse();
+            int count = 0;
+            for(Course course : category.getCourseChoices().keySet()) {
+                if(complete.keySet().contains(course)) {
+                    count++;
+                }
+            }
+
+            return count >= category.getCreditsRequired();
+        } else {
+            return false;
+        }
+        
+    }
     
 
     public Student getCurrentStudent() {
