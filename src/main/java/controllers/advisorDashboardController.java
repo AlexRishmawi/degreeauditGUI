@@ -107,15 +107,12 @@ public class advisorDashboardController implements Initializable {
 
     DegreeWork degreeWork = DegreeWork.getInstance();
 
-    Student student = degreeWork.getCurrentUser().isStudent() ? (Student) degreeWork.getCurrentUser()
-            : degreeWork.getCurrentStudent();
+    Student student
 
-    private void setupPieChart() {
-
-        ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
+    void setupPieChart() { 
+        ObservableList<PieChart.Data> pieChatData = FXCollections.observableArrayList(
                 new PieChart.Data("Completed", student.getCompletedCourse().size()),
-                new PieChart.Data("In Progress", student.getCurrentSemester().getCourses().size()),
-                new PieChart.Data("Not Started", student.getDegree().getTotalCreditRequired()
+                new PieChart.Data("In Progress", student.getCurrent        new PieChart.Data("Not Started", student.getDegree().getTotalCreditRequired()
                         - (student.getCompletedCourse().size() + student.getCurrentSemester().getCourses().size())));
 
         pieChart.setData(pieChartData);
