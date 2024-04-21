@@ -102,7 +102,7 @@ public class AdvisorSearchController implements Initializable {
         try {
             System.out.println("View details for: " + student.getFirstName());
             DegreeWork.getInstance().setCurrentStudent(student.getID());
-            App.setRoot("landing_page");
+            App.setRoot("advisor_dashboard_page");
         } catch (IOException e) {
             e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR, "Cannot load the student details page.");
