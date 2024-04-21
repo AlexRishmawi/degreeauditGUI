@@ -9,6 +9,8 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -22,6 +24,8 @@ import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import model.Course;
 import model.DegreeWork;
 
@@ -95,7 +99,7 @@ void searchClicked(ActionEvent event) {
 private void handleViewDetails(Course course) {
     try {
         System.out.println("View details for: " + course.getCourseName());
-        // Implement navigation logic
+        
     } catch (Exception e) {
         e.printStackTrace();
         Alert alert = new Alert(Alert.AlertType.ERROR, "Error loading the details.");
@@ -110,11 +114,34 @@ private void handleViewDetails(Course course) {
         viewButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                handleViewDetails(course);
+                handleShowPopup(event, course);
             }
         });
         return viewButton;
     }
 
+    @FXML
+    private void handleShowPopup(ActionEvent event, Course course) {
+        // Create a new stage (window)
+        Stage popupStage = new Stage();
+        popupStage.initModality(Modality.APPLICATION_MODAL); // Make it modal
+        popupStage.setTitle("Popup Window");
+
+        // Create the content for the popup
+        VBox content = new VBox(10);
+        content.setAlignment(Pos.TOP_LEFT);
+        Label messageLabel = new Label(course.getSubject() + " " + course.getCode() + ": " + course.getCourseName()
+            + "\n" + course.getDescription() + "\n\nCredits: " + course.getCreditHours());
+        Button closeButton = new Button("Close");
+        closeButton.setOnAction(e -> popupStage.close());
+
+        content.getChildren().addAll(messageLabel, closeButton);
+        content.setPadding(new Insets(10));
+
+        // Set the scene and show the stage
+        Scene popupScene = new Scene(content, 400, 300);
+        popupStage.setScene(popupScene);
+        popupStage.showAndWait(); // Show and wait until it's closed
+    }
     
 }
