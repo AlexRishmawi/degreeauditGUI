@@ -121,15 +121,7 @@
                <Insets top="15.0" />
             </StackPane.margin>
          </Label>
-         <Label fx:id="ID" prefHeight="31.0" prefWidth="150.0" text="LEVEL" StackPane.alignment="CENTER_RIGHT">
-            <font>
-               <Font name="Times New Roman Bold" size="15.0" />
-            </font>
-            <StackPane.margin>
-               <Insets top="200.0" />
-            </StackPane.margin>
-         </Label>
-         <Label fx:id="classLevel" prefHeight="31.0" prefWidth="150.0" text="EMAIL" StackPane.alignment="CENTER_RIGHT">
+         <Label fx:id="email" prefHeight="31.0" prefWidth="150.0" text="EMAIL" StackPane.alignment="CENTER_RIGHT">
             <font>
                <Font name="Times New Roman Bold" size="15.0" />
             </font>
@@ -137,12 +129,20 @@
                <Insets top="138.0" />
             </StackPane.margin>
          </Label>
-         <Label fx:id="level" prefHeight="31.0" prefWidth="150.0" text="ID" StackPane.alignment="CENTER_RIGHT">
+         <Label fx:id="ID" prefHeight="31.0" prefWidth="150.0" text="Level" StackPane.alignment="CENTER_RIGHT">
             <font>
                <Font name="Times New Roman Bold" size="15.0" />
             </font>
             <StackPane.margin>
                <Insets top="78.0" />
+            </StackPane.margin>
+         </Label>
+         <Label fx:id="level" prefHeight="29.0" prefWidth="150.0" text="ID" StackPane.alignment="CENTER_RIGHT">
+            <font>
+               <Font name="Times New Roman Bold" size="15.0" />
+            </font>
+            <StackPane.margin>
+               <Insets top="200.0" />
             </StackPane.margin>
          </Label>
       </children>

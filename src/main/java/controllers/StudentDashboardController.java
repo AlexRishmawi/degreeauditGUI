@@ -41,13 +41,13 @@ public class StudentDashboardController implements Initializable{
     private Button appointmentButton;
 
     @FXML
-    private Label classLevel;
-
-    @FXML
     private Label collegeLabel;
 
     @FXML
     private Label degreeLabel;
+
+    @FXML
+    private Label email;
 
     @FXML
     private Rectangle header;
@@ -80,7 +80,7 @@ public class StudentDashboardController implements Initializable{
     private StackPane stackPane;
 
     @FXML
-    private StackedBarChart<Number, String> stackedProgress;
+    private StackedBarChart<?, ?> stackedProgress;
 
     @FXML
     private Label studentName;
@@ -161,11 +161,11 @@ public class StudentDashboardController implements Initializable{
         setupStackedBarChart();
 
         studentName.setText(student.getFirstName() + " " + student.getLastName());
-        classLevel.setText(student.getLevel().toString());
-        level.setText(student.getDegree().getDegreeType());
+        level.setText(student.getLevel().toString());
+        email.setText(student.getEmail());
         ID.setText(student.getStudentID());
 
-        degreeLabel.setText(student.getDegree().getDegreeType());
+        degreeLabel.setText(student.getDegree().getSubject());
         majorLabel.setText(student.getDegree().toString());
 
         advisorName.setText(student.getAdvisor().getFirstName() + " " + student.getAdvisor().getLastName());

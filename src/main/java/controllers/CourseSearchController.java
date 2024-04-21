@@ -59,53 +59,53 @@ public class CourseSearchController implements Initializable{
     private ScrollPane myScrollPane;
 
     @Override
-public void initialize(URL location, ResourceBundle resources) {
-    headerShadow.widthProperty().bind(stackPane.widthProperty());
-    header.widthProperty().bind(stackPane.widthProperty());
-    container.setFillWidth(true); // Ensuring that the VBox inside the ScrollPane expands to fill the width.
-}
-
-@FXML
-void searchClicked(ActionEvent event) {
-    String searchText = courseSearch.getText();
-
-    DegreeWork degreeWork = DegreeWork.getInstance();
-    if(!degreeWork.getCurrentUser().isStudent()){
-        return;
+    public void initialize(URL location, ResourceBundle resources) {
+        headerShadow.widthProperty().bind(stackPane.widthProperty());
+        header.widthProperty().bind(stackPane.widthProperty());
+        container.setFillWidth(true); // Ensuring that the VBox inside the ScrollPane expands to fill the width.
     }
 
-    ArrayList<Course> searchedCourses = degreeWork.studentCourseSearch(searchText);
-    container.getChildren().clear();
-    for (Course course : searchedCourses) {
-        HBox hbox = new HBox(10);
-        hbox.setStyle("-fx-background-color: white; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 5;");
-        hbox.setPadding(new Insets(5, 10, 5, 10)); // Apply padding inside the HBox
-        hbox.setPrefWidth(Double.MAX_VALUE); // Ensure HBox stretches to full width
-        hbox.setAlignment(javafx.geometry.Pos.CENTER_LEFT);
+    @FXML
+    void searchClicked(ActionEvent event) {
+        String searchText = courseSearch.getText();
 
-        Label courseLabel = new Label(course.getCourseName());
-        Button viewButton = createViewDetailsButton(course);
-        courseLabel.setStyle("-fx-font-size: 20px; -fx-font-weight: bold; -fx-margin: 10;");
+        DegreeWork degreeWork = DegreeWork.getInstance();
+        if(!degreeWork.getCurrentUser().isStudent()){
+            return;
+        }
 
-        Region spacer = new Region();
-        HBox.setHgrow(spacer, Priority.ALWAYS);
+        ArrayList<Course> searchedCourses = degreeWork.studentCourseSearch(searchText);
+        container.getChildren().clear();
+        for (Course course : searchedCourses) {
+            HBox hbox = new HBox(10);
+            hbox.setStyle("-fx-background-color: white; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 5;");
+            hbox.setPadding(new Insets(5, 10, 5, 10)); // Apply padding inside the HBox
+            hbox.setPrefWidth(Double.MAX_VALUE); // Ensure HBox stretches to full width
+            hbox.setAlignment(javafx.geometry.Pos.CENTER_LEFT);
 
-        hbox.getChildren().addAll(courseLabel, new Region(), viewButton);
-        VBox.setMargin(hbox, new Insets(5));
-        container.getChildren().add(hbox);
+            Label courseLabel = new Label(course.toStringCourseAbbr() + ": " + course.getCourseName());
+            Button viewButton = createViewDetailsButton(course);
+            courseLabel.setStyle("-fx-font-size: 20px; -fx-font-weight: bold; -fx-margin: 10;");
+
+            Region spacer = new Region();
+            HBox.setHgrow(spacer, Priority.ALWAYS);
+
+            hbox.getChildren().addAll(courseLabel, spacer, viewButton);
+            VBox.setMargin(hbox, new Insets(5));
+            container.getChildren().add(hbox);
+        }
     }
-}
 
-private void handleViewDetails(Course course) {
-    try {
-        System.out.println("View details for: " + course.getCourseName());
+// private void handleViewDetails(Course course) {
+//     try {
+//         System.out.println("View details for: " + course.getCourseName());
         
-    } catch (Exception e) {
-        e.printStackTrace();
-        Alert alert = new Alert(Alert.AlertType.ERROR, "Error loading the details.");
-        alert.showAndWait();
-    }
-}
+//     } catch (Exception e) {
+//         e.printStackTrace();
+//         Alert alert = new Alert(Alert.AlertType.ERROR, "Error loading the details.");
+//         alert.showAndWait();
+//     }
+// }
 
    
     private Button createViewDetailsButton(Course course) {
