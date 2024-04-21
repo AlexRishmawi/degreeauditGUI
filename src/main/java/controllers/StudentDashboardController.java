@@ -216,8 +216,10 @@ public class StudentDashboardController implements Initializable{
                 HBox.setHgrow(spacer, Priority.ALWAYS);
                 
                 Label courseName = new Label(course.toStringCourseAbbr() + ": " + course.getCourseName());
-                Label courseCredits = new Label(Integer.toString(course.getCreditHours()));
+                Label courseCredits = new Label("Credit Hours: " + Integer.toString(course.getCreditHours()));
 
+                courseName.setStyle("-fx-font-weight: bold;");
+                courseCredits.setStyle("-fx-font-weight: bold;");
                 courseBox.getChildren().addAll(courseName, spacer, courseCredits);
                 sectionBox.getChildren().addAll(courseBox);
             }
