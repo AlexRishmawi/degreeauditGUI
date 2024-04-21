@@ -237,8 +237,9 @@ public class Student extends User {
         ArrayList<ElectiveCategory> electiveList = this.degree.getElectiveList();
         for (ElectiveCategory category : electiveList) {
             for (Course course : category.getCourseChoices().keySet()) {
-                if (this.completeCourses.keySet().stream().anyMatch(c -> !c.equals(course)) || 
-                        allCourseNotTaken.keySet().stream().anyMatch(cId -> !cId.equals(course.getID()))) 
+                if (!this.completeCourses.keySet().contains(course) && 
+                        !allCourseNotTaken.keySet().contains(course.getID())
+                    )
                 {
                     allCourseNotTaken.put(course.getID(), category.getCourseChoices().get(course));
                     queueCourse.add(course);
