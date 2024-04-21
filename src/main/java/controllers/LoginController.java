@@ -80,6 +80,11 @@ public class LoginController implements Initializable{
     void goToSignUpPage(MouseEvent event) throws IOException{
         App.setRoot("signup_page");
     }
+    @FXML
+    void gotoForgetPasswordPage(MouseEvent event) throws IOException{
+        App.setRoot("forgot_password");
+    }
+
 
     @FXML
     void loginClicked(ActionEvent event) throws IOException{
