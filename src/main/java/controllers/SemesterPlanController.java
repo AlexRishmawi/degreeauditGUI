@@ -1,10 +1,11 @@
 package controllers;
 
-import aisle.App;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+
+import aisle.App;
+
 import java.net.URL;
 
 import javafx.stage.Stage;
