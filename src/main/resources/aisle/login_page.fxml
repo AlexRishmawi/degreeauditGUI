@@ -12,6 +12,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -23,70 +24,65 @@
                <children>
                   <StackPane fx:id="stackPane" prefHeight="720.0" prefWidth="761.0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
                      <children>
-                        <Button fx:id="loggedin" mnemonicParsing="false" onAction="#loginClicked" prefHeight="49.0" prefWidth="320.0" text="Login">
-                           <font>
-                              <Font name="Calibri Bold" size="27.0" />
-                           </font>
-                           <effect>
-                              <DropShadow />
-                           </effect>
-                           <StackPane.margin>
-                              <Insets bottom="-180.0" />
-                           </StackPane.margin>
-                        </Button>
-                        <Text fx:id="welcome" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome," wrappingWidth="320.0" StackPane.alignment="CENTER">
-                           <font>
-                              <Font name="Calibri" size="23.0" />
-                           </font>
-                           <StackPane.margin>
-                              <Insets bottom="300.0" />
-                           </StackPane.margin>
-                        </Text>
-                        <TextField fx:id="txt_userEmail" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="49.0" prefWidth="320.0" promptText="Email">
-                           <font>
-                              <Font name="Arial" size="26.0" />
-                           </font>
-                           <StackPane.margin>
-                              <Insets bottom="130.0" />
-                           </StackPane.margin>
-                        </TextField>
-                        <PasswordField fx:id="txt_userPassword" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="49.0" prefWidth="320.0" promptText="Password">
-                           <font>
-                              <Font name="Arial" size="26.0" />
-                           </font>
-                        </PasswordField>
-                        <Label fx:id="login_error" prefHeight="14.0" prefWidth="320.0" textFill="RED" StackPane.alignment="CENTER">
-                           <font>
-                              <Font name="Arial" size="11.0" />
-                           </font>
-                           <StackPane.margin>
-                              <Insets bottom="-85.0" />
-                           </StackPane.margin>
-                        </Label>
-                        <Text fx:id="welcome1" fill="#73000a" strokeType="OUTSIDE" strokeWidth="0.0" text="Login" wrappingWidth="320.0">
-                           <font>
-                              <Font name="Calibri Bold" size="23.0" />
-                           </font>
-                           <StackPane.margin>
-                              <Insets bottom="240.0" />
-                           </StackPane.margin>
-                        </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="No Account? Go to Sign Up" wrappingWidth="320.0" StackPane.alignment="CENTER">
-                           <StackPane.margin>
-                              <Insets bottom="-260.0" />
-                           </StackPane.margin>
-                           <font>
-                              <Font size="10.0" />
-                           </font>
-                        </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Forgot Password" wrappingWidth="320.0">
-                           <font>
-                              <Font size="10.0" />
-                           </font>
-                           <StackPane.margin>
-                              <Insets bottom="-290.0" />
-                           </StackPane.margin>
-                        </Text>
+                        <VBox fx:id="vboxLoginInfo" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="194.0" prefWidth="110.0" StackPane.alignment="CENTER">
+                           <children>
+                              <Text fx:id="welcome" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome," wrappingWidth="320.0" VBox.vgrow="ALWAYS">
+                                 <font>
+                                    <Font name="Calibri" size="23.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="welcome1" fill="#73000a" strokeType="OUTSIDE" strokeWidth="0.0" text="Login" wrappingWidth="320.0" VBox.vgrow="ALWAYS">
+                                 <font>
+                                    <Font name="Calibri Bold" size="23.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <TextField fx:id="txt_userEmail" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="49.0" prefWidth="320.0" promptText="Email" VBox.vgrow="ALWAYS">
+                                 <font>
+                                    <Font name="Arial" size="26.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" />
+                                 </VBox.margin>
+                              </TextField>
+                              <PasswordField fx:id="txt_userPassword" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="49.0" prefWidth="320.0" promptText="Password" VBox.vgrow="ALWAYS">
+                                 <font>
+                                    <Font name="Arial" size="26.0" />
+                                 </font>
+                              </PasswordField>
+                              <Label fx:id="login_error" prefHeight="14.0" prefWidth="320.0" textFill="RED">
+                                 <font>
+                                    <Font name="Arial" size="11.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" top="3.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Button fx:id="loggedin" mnemonicParsing="false" onAction="#loginClicked" prefHeight="49.0" prefWidth="320.0" text="Login" VBox.vgrow="ALWAYS">
+                                 <font>
+                                    <Font name="Calibri Bold" size="27.0" />
+                                 </font>
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </Button>
+                              <Text fx:id="goToSignUp" onMouseClicked="#goToSignUpPage" strokeType="OUTSIDE" strokeWidth="0.0" text="No Account? Go to Sign Up" wrappingWidth="320.0" VBox.vgrow="ALWAYS">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Forgot Password" wrappingWidth="320.0" VBox.vgrow="ALWAYS">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </VBox>
                      </children>
                   </StackPane>
                </children>
@@ -116,6 +112,14 @@
                               <Insets bottom="20.0" />
                            </StackPane.margin>
                         </Text>
+                        <Button fx:id="backButton" mnemonicParsing="false" onAction="#goBack" text="Back" StackPane.alignment="TOP_LEFT">
+                           <StackPane.margin>
+                              <Insets />
+                           </StackPane.margin>
+                           <font>
+                              <Font name="Arial Bold" size="13.0" />
+                           </font>
+                        </Button>
                      </children>
                   </StackPane>
                </children>

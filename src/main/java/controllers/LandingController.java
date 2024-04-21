@@ -62,18 +62,7 @@ public class LandingController implements Initializable{
         stackPane.prefWidthProperty().bind(parent.widthProperty().multiply(0.55));
         logo.fitWidthProperty().bind(stackPaneLeft.widthProperty().multiply(0.65));
         logo.fitHeightProperty().bind(stackPaneLeft.heightProperty().multiply(0.65));
-        
-        tologin.prefWidthProperty().bind(stackPane.widthProperty().multiply(0.45));
-        tologin.prefHeightProperty().bind(stackPane.heightProperty().multiply(0.05));
-        tologin.styleProperty().bind(Bindings.concat("-fx-font-size: ", tologin.widthProperty().multiply(0.05), "pt;"));
-        
-        tosignup.prefWidthProperty().bind(stackPane.widthProperty().multiply(0.45));
-        tosignup.prefHeightProperty().bind(stackPane.heightProperty().multiply(0.05));
-        tosignup.translateYProperty().bind(stackPane.heightProperty().multiply(0.05));
-        tosignup.styleProperty().bind(Bindings.concat("-fx-font-size: ", tosignup.widthProperty().multiply(0.05), "pt;"));
-        
-        welcome.translateYProperty().bind(stackPane.heightProperty().multiply(-0.025));
-        welcome.styleProperty().bind(Bindings.concat("-fx-font-size: ", tologin.widthProperty().multiply(0.05), "pt;"));
+
     }
 
     @Override

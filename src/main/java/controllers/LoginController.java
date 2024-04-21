@@ -14,20 +14,32 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import model.DegreeWork;
 import model.Student;
 import model.Advisor;
 
 public class LoginController implements Initializable{
+
     @FXML
     private HBox Hbox;
 
     @FXML
     private HBox HboxLeft;
+
+    @FXML
+    private Button backButton;
+
+    @FXML
+    private Text goToSignUp;
+
+    @FXML
+    private Button loggedin;
 
     @FXML
     private Label login_error;
@@ -51,10 +63,23 @@ public class LoginController implements Initializable{
     private PasswordField txt_userPassword;
 
     @FXML
+    private VBox vboxLoginInfo;
+
+    @FXML
     private Text welcome;
 
     @FXML
-    private Button loggedin;
+    private Text welcome1;
+
+    @FXML
+    void goBack(ActionEvent event) throws IOException{
+        App.setRoot("landing_page");
+    }
+
+    @FXML
+    void goToSignUpPage(MouseEvent event) throws IOException{
+        App.setRoot("signup_page");
+    }
 
     @FXML
     void loginClicked(ActionEvent event) throws IOException{
@@ -76,11 +101,6 @@ public class LoginController implements Initializable{
         }
     }
 
-    @FXML
-    private void back(ActionEvent event) throws IOException {
-        App.setRoot("landing_page");
-    }
-
     private void sizes () {
         HboxLeft.prefWidthProperty().bind(parent.widthProperty().multiply(0.45));
         stackPaneLeft.prefWidthProperty().bind(parent.widthProperty().multiply(0.45));
@@ -89,22 +109,7 @@ public class LoginController implements Initializable{
         logo.fitWidthProperty().bind(stackPaneLeft.widthProperty().multiply(0.65));
         logo.fitHeightProperty().bind(stackPaneLeft.heightProperty().multiply(0.65));
 
-        int size = stackPane.getChildren().size();
-        for(int i = 0; i < size; i++) {
-            stackPane.getChildren().get(i).prefWidthProperty().bind(stackPane.widthProperty().multiply(0.45));
-            stackPane.getChildren().get(i).prefHeightProperty().bind(stackPane.heightProperty().multiply(0.05));
-            stackPane.getChildren().get(i).styleProperty().bind(Bindings.concat("-fx-font-size: ", stackPane.getChildren().get(i).widthProperty().multiply(0.05), "pt;"));
-        }
-
-        // txt_userEmail.prefWidthProperty().bind(stackPane.widthProperty().multiply(0.45));
-        // txt_userEmail.prefHeightProperty().bind(stackPane.heightProperty().multiply(0.05));
-        // txt_userEmail.styleProperty().bind(Bindings.concat("-fx-font-size: ", txt_userEmail.widthProperty().multiply(0.05), "pt;"));
-        
-        // txt_userPassword.prefWidthProperty().bind(stackPane.widthProperty().multiply(0.45));
-        // txt_userPassword.prefHeightProperty().bind(stackPane.heightProperty().multiply(0.05));
-        // txt_userPassword.translateYProperty().bind(stackPane.heightProperty().multiply(0.05));
-        // txt_userPassword.styleProperty().bind(Bindings.concat("-fx-font-size: ", txt_userPassword.widthProperty().multiply(0.05), "pt;"));
-        
+        vboxLoginInfo.prefWidthProperty().bind(stackPane.widthProperty().multiply(0.45));
     }
 
     @Override

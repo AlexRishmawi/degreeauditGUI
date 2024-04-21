@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -20,36 +21,40 @@
                <children>
                   <StackPane fx:id="stackPane" prefHeight="720.0" prefWidth="761.0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
                      <children>
-                        <Button fx:id="tologin" mnemonicParsing="false" onAction="#onLoginClicked" prefHeight="49.0" prefWidth="234.0" text="Log In">
-                           <font>
-                              <Font name="Calibri Bold" size="27.0" />
-                           </font>
-                           <effect>
-                              <DropShadow />
-                           </effect>
-                           <StackPane.margin>
-                              <Insets bottom="60.0" />
-                           </StackPane.margin>
-                        </Button>
-                        <Button fx:id="tosignup" mnemonicParsing="false" onAction="#onSignupClicked" prefHeight="49.0" prefWidth="234.0" text="Sign Up" StackPane.alignment="CENTER">
-                           <font>
-                              <Font name="Calibri Bold" size="27.0" />
-                           </font>
-                           <effect>
-                              <DropShadow />
-                           </effect>
-                           <StackPane.margin>
-                              <Insets bottom="-70.0" />
-                           </StackPane.margin>
-                        </Button>
-                        <Text fx:id="welcome" fill="#73000a" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome" textAlignment="CENTER" wrappingWidth="202.35416793823242" StackPane.alignment="CENTER">
-                           <font>
-                              <Font name="Calibri Bold" size="34.0" />
-                           </font>
-                           <StackPane.margin>
-                              <Insets bottom="190.0" />
-                           </StackPane.margin>
-                        </Text>
+                        <VBox alignment="CENTER">
+                           <children>
+                              <Text fx:id="welcome" fill="#73000a" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome" textAlignment="CENTER" wrappingWidth="202.35416793823242">
+                                 <font>
+                                    <Font name="Calibri Bold" size="34.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="14.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <Button fx:id="tologin" mnemonicParsing="false" onAction="#onLoginClicked" prefHeight="49.0" prefWidth="234.0" text="Log In">
+                                 <font>
+                                    <Font name="Calibri Bold" size="27.0" />
+                                 </font>
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="tosignup" mnemonicParsing="false" onAction="#onSignupClicked" prefHeight="49.0" prefWidth="234.0" text="Sign Up">
+                                 <font>
+                                    <Font name="Calibri Bold" size="27.0" />
+                                 </font>
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                                 <VBox.margin>
+                                    <Insets bottom="60.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
                      </children>
                   </StackPane>
                </children>
