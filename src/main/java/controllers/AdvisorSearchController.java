@@ -27,7 +27,7 @@ import javafx.scene.shape.Rectangle;
 import model.DegreeWork;
 import model.Student;
 
-public class AdvisorSearchController implements Initializable{
+public class AdvisorSearchController implements Initializable {
 
     @FXML
     private TextField advisorSearch;
@@ -66,14 +66,15 @@ public class AdvisorSearchController implements Initializable{
         studentList.getChildren().clear();
         for (Student student : searchedStudents) {
             HBox hbox = new HBox(10); // 10 is the spacing between elements in the HBox
-            hbox.setStyle("-fx-background-color: white; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 5;");
+            hbox.setStyle(
+                    "-fx-background-color: white; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 5;");
             hbox.setPadding(new Insets(5, 10, 5, 10)); // Apply padding inside the HBox
             hbox.setPrefWidth(Double.MAX_VALUE); // Ensure HBox stretches to full width
             hbox.setAlignment(javafx.geometry.Pos.CENTER_LEFT);
-            Label studentLabel = new Label(student.getFirstName() + " " + student.getLastName() + "\n" + student.getStudentID());
+            Label studentLabel = new Label(
+                    student.getFirstName() + " " + student.getLastName() + "\n" + student.getStudentID());
             Button viewButton = createViewDetailsButton(student);
             studentLabel.setStyle("-fx-font-size: 20px; -fx-font-weight: bold; -fx-margin: 10;");
-            
 
             Region spacer = new Region();
             HBox.setHgrow(spacer, Priority.ALWAYS); // Makes the spacer expandable
@@ -83,10 +84,11 @@ public class AdvisorSearchController implements Initializable{
             studentList.getChildren().add(hbox);
         }
     }
-    
+
     private Button createViewDetailsButton(Student student) {
         Button viewButton = new Button("View Details");
-        viewButton.setStyle("-fx-background-color: #73000a; -fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold; -fx-border-radius: 5; -fx-padding: 5 10 5 10;");
+        viewButton.setStyle(
+                "-fx-background-color: #73000a; -fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold; -fx-border-radius: 5; -fx-padding: 5 10 5 10;");
         viewButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
