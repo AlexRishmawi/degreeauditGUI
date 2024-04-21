@@ -81,7 +81,7 @@
                                     <Insets top="10.0" />
                                  </VBox.margin>
                               </Text>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Forgot Password" wrappingWidth="320.0" VBox.vgrow="ALWAYS">
+                              <Text fx:id="forgetpassword" onMouseClicked="#gotoForgetPasswordPage" strokeType="OUTSIDE" strokeWidth="0.0" text="Forgot Password" wrappingWidth="320.0" VBox.vgrow="ALWAYS">
                                  <font>
                                     <Font size="10.0" />
                                  </font>
