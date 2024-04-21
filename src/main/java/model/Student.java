@@ -223,7 +223,6 @@ public class Student extends User {
 
         HashMap<UUID, Integer> allCourseNotTaken = new HashMap<>();
         ArrayList<Course> queueCourse = new ArrayList<>();
-  
 
         // Get all the course need to take
         HashMap<Course, Integer> majorCourses = this.degree.getMajorCourses();

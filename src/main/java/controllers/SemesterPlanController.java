@@ -15,7 +15,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -124,6 +123,11 @@ public class SemesterPlanController implements Initializable {
     @FXML
     void dashboardClicked(ActionEvent event) throws IOException {
         App.setRoot("student_dashboard_page");
+    }
+
+    @FXML
+    void courseSearchClicked(ActionEvent event) throws IOException {
+        App.setRoot("student_search_page");
     }
 
     @Override
