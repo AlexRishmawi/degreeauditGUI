@@ -3,6 +3,7 @@ package controllers;
 import java.io.IOException;
 
 import aisle.App;
+import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -88,6 +89,9 @@ public class SignupController {
     private Label signup_error;
 
     @FXML
+    private StackPane stackBackground;
+
+    @FXML
     void goBack(ActionEvent event) throws IOException{
         App.setRoot("landing_page");
     }
@@ -132,5 +136,24 @@ public class SignupController {
 
         signup_error.setText(" ");
         App.setRoot("student_dashboard_page");
+    }
+
+    private void size() {
+        HboxLeft.prefWidthProperty().bind(parent.widthProperty().multiply(0.45));
+        stackPaneLeft.prefWidthProperty().bind(parent.widthProperty().multiply(0.45));
+        Hbox.prefWidthProperty().bind(parent.widthProperty().multiply(0.55));
+        stackPane.prefWidthProperty().bind(parent.widthProperty().multiply(0.55));
+        logo.fitWidthProperty().bind(stackPaneLeft.widthProperty().multiply(0.65));
+        logo.fitHeightProperty().bind(stackPaneLeft.heightProperty().multiply(0.65));
+
+        stackBackground.prefHeightProperty().bind(parent.heightProperty().multiply(1));
+        stackBackground.prefWidthProperty().bind(parent.widthProperty().multiply(1));
+        background.fitWidthProperty().bind(stackBackground.widthProperty().multiply(1));
+        background.fitHeightProperty().bind(stackBackground.heightProperty().multiply(1));
+    }
+
+    @FXML
+    public void initialize() {
+        size();
     }
 }   

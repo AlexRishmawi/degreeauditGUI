@@ -283,6 +283,7 @@
          </ImageView>
          <MenuButton fx:id="menuButton" mnemonicParsing="false" prefHeight="23.0" prefWidth="69.0" styleClass="menu-item" StackPane.alignment="TOP_RIGHT">
             <items>
+               <MenuItem id="menu-items" fx:id="dashboard" mnemonicParsing="false" onAction="#dashboardClicked" text="Dashboard" />
                <MenuItem id="menu-items" fx:id="plan" mnemonicParsing="false" onAction="#semesterPlanClicked" text="8-Semester Plan" />
                <MenuItem id="menu-items" fx:id="logout" mnemonicParsing="false" onAction="#logOutClicked" text="Log Out" />
             </items>

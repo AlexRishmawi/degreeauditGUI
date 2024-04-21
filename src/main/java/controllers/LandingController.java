@@ -46,6 +46,12 @@ public class LandingController implements Initializable {
     private Text welcome;
 
     @FXML
+    private StackPane stackBackground;
+
+    @FXML
+    private ImageView background;
+    
+    @FXML
     private void onLoginClicked(ActionEvent event) throws IOException {
         App.setRoot("login_page");
     }
@@ -62,6 +68,11 @@ public class LandingController implements Initializable {
         stackPane.prefWidthProperty().bind(parent.widthProperty().multiply(0.55));
         logo.fitWidthProperty().bind(stackPaneLeft.widthProperty().multiply(0.65));
         logo.fitHeightProperty().bind(stackPaneLeft.heightProperty().multiply(0.65));
+
+        stackBackground.prefHeightProperty().bind(parent.heightProperty().multiply(1));
+        stackBackground.prefWidthProperty().bind(parent.widthProperty().multiply(1));
+        background.fitWidthProperty().bind(stackBackground.widthProperty().multiply(1));
+        background.fitHeightProperty().bind(stackBackground.heightProperty().multiply(1));
 
     }
 

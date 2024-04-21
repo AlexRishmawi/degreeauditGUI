@@ -96,6 +96,9 @@ public class StudentDashboardController implements Initializable{
 
     @FXML
     private VBox degreeProgress;
+
+    @FXML
+    private MenuItem dashboard;
     
     @FXML
     void logOutClicked(ActionEvent event) throws IOException{
@@ -103,6 +106,11 @@ public class StudentDashboardController implements Initializable{
         degreeWork.logout();
 
         App.setRoot("landing_page");
+    }
+
+    @FXML
+    void dashboardClicked(ActionEvent event) throws IOException {
+        App.setRoot("student_dashboard");
     }
 
     @FXML
