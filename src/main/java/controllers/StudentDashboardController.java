@@ -80,7 +80,7 @@ public class StudentDashboardController implements Initializable{
     private StackPane stackPane;
 
     @FXML
-    private StackedBarChart<?, ?> stackedProgress;
+    private StackedBarChart<Number, String> stackedProgress;
 
     @FXML
     private Label studentName;
