@@ -28,7 +28,7 @@ import javafx.stage.Stage;
 import model.Course;
 import model.DegreeWork;
 
-public class CourseSearchController implements Initializable{
+public class CourseSearchControllerForAdvisor implements Initializable{
 
     @FXML
     private TextField courseSearch;

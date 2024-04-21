@@ -72,6 +72,12 @@ public class LoginController implements Initializable{
     private Text welcome1;
 
     @FXML
+    private ImageView background;
+
+    @FXML
+    private StackPane stackBackground;
+
+    @FXML
     void goBack(ActionEvent event) throws IOException{
         App.setRoot("landing_page");
     }
@@ -115,6 +121,11 @@ public class LoginController implements Initializable{
         logo.fitHeightProperty().bind(stackPaneLeft.heightProperty().multiply(0.65));
 
         vboxLoginInfo.prefWidthProperty().bind(stackPane.widthProperty().multiply(0.45));
+
+        stackBackground.prefHeightProperty().bind(parent.heightProperty().multiply(1));
+        stackBackground.prefWidthProperty().bind(parent.widthProperty().multiply(1));
+        background.fitWidthProperty().bind(stackBackground.widthProperty().multiply(1));
+        background.fitHeightProperty().bind(stackBackground.heightProperty().multiply(1));
     }
 
     @Override

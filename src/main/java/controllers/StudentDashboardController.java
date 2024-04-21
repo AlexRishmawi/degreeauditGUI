@@ -2,7 +2,6 @@ package controllers;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
@@ -96,6 +95,9 @@ public class StudentDashboardController implements Initializable{
 
     @FXML
     private VBox degreeProgress;
+
+    @FXML
+    private MenuItem dashboard;
     
     @FXML
     void logOutClicked(ActionEvent event) throws IOException{
@@ -103,6 +105,11 @@ public class StudentDashboardController implements Initializable{
         degreeWork.logout();
 
         App.setRoot("landing_page");
+    }
+
+    @FXML
+    void dashboardClicked(ActionEvent event) throws IOException {
+        App.setRoot("student_dashboard");
     }
 
     @FXML
@@ -124,12 +131,16 @@ public class StudentDashboardController implements Initializable{
         
     Student student = degreeWork.getCurrentUser().isStudent() ? (Student) degreeWork.getCurrentUser() : degreeWork.getCurrentStudent();
 
-    private void setupPieChart() {
+    double completed = student.getCompletedCourse().keySet().stream().mapToDouble(c -> c.getCreditHours()).sum();
+    double inProgress = student.getCurrentSemester().getCourses().stream().mapToDouble(c -> c.getCreditHours()).sum();
+    double notStarted = student.getDegree().getTotalCreditRequired() - (completed + inProgress);
     
+    private void setupPieChart() {
+
         ObservableList <PieChart.Data> pieChartData = FXCollections.observableArrayList(
-            new PieChart.Data("Completed", student.getCompletedCourse().size()),
-            new PieChart.Data("In Progress", student.getCurrentSemester().getCourses().size()),
-            new PieChart.Data("Not Started", student.getDegree().getTotalCreditRequired() - (student.getCompletedCourse().size() + student.getCurrentSemester().getCourses().size()))
+            new PieChart.Data("Completed", completed),
+            new PieChart.Data("In Progress", inProgress),
+            new PieChart.Data("Not Started", notStarted)
         );
 
         pieChart.setData(pieChartData);
@@ -139,6 +150,26 @@ public class StudentDashboardController implements Initializable{
 
     @SuppressWarnings("unchecked")
     private void setupStackedBarChart() {
+        double overallCompleted = student.getCompletedCourse().keySet().stream().mapToDouble(c -> c.getCreditHours()).sum();
+        double overallCompletedPercent = overallCompleted / student.getDegree().getTotalCreditRequired();
+
+        double majorCompleted = student.getDegree().getMajorCourses().keySet().stream().mapToDouble(c -> c.getCreditHours()).sum() - 
+                                student.getDegree().getMajorCourses().keySet().stream().filter(c -> !student.getCompletedCourse().containsKey(c)).mapToDouble(c -> c.getCreditHours()).sum();
+        double majorCompletePercent = majorCompleted / student.getDegree().getMajorCourses().keySet().stream().mapToDouble(c -> c.getCreditHours()).sum();
+
+        double electiveCompleted = student.getDegree().getElectiveList().stream().mapToDouble(e -> e.getCreditsRequired()).sum() - 
+                                   student.getDegree().getElectiveList().stream().filter(e -> !degreeWork.electiveCategoryCompleted(e)).mapToDouble(e -> e.getCreditsRequired()).sum();
+        double electiveCompletePercent = electiveCompleted / student.getDegree().getElectiveList().stream().mapToDouble(e -> e.getCreditsRequired()).sum();
+        
+        double electiveNotCompleted = student.getDegree().getElectiveList().stream().filter(e -> !degreeWork.electiveCategoryCompleted(e)).mapToDouble(e -> e.getCreditsRequired()).sum();
+        double electiveNotCompletedPercent = electiveNotCompleted / student.getDegree().getElectiveList().stream().mapToDouble(e -> e.getCreditsRequired()).sum();
+
+        double majorIncompleted = student.getDegree().getMajorCourses().keySet().stream().filter(c -> !student.getCompletedCourse().containsKey(c)).mapToDouble(c -> c.getCreditHours()).sum();
+        double majorIncompletedPercent = majorIncompleted / student.getDegree().getMajorCourses().keySet().stream().mapToDouble(c -> c.getCreditHours()).sum();
+
+        double overallnotCompleted = student.getDegree().getTotalCreditRequired() - completed;
+        double overallnotCompletedPercent = overallnotCompleted / student.getDegree().getTotalCreditRequired();
+
         CategoryAxis yAxis = new CategoryAxis();
         NumberAxis xAxis = new NumberAxis();
 
@@ -146,18 +177,16 @@ public class StudentDashboardController implements Initializable{
         xAxis.getStyleClass().add("axis-label");
         
         XYChart.Series<Number, String> series1 = new XYChart.Series<>();
-        series1.setName("Category 1");
-        series1.getData().add(new XYChart.Data<>(50, "Course 1"));
-        series1.getData().add(new XYChart.Data<>(20, "Course 2"));
-        series1.getData().add(new XYChart.Data<>(30, "Course 3"));
-        series1.getData().add(new XYChart.Data<>(10, "Course 4"));
+        series1.setName("Completed");
+        series1.getData().add(new XYChart.Data<>(overallCompletedPercent*100, "Overall"));
+        series1.getData().add(new XYChart.Data<>(majorCompletePercent*100, "Major"));
+        series1.getData().add(new XYChart.Data<>(electiveCompletePercent*100, "Elective"));
 
         XYChart.Series<Number, String> series2 = new XYChart.Series<>();
-        series2.setName("Category 2");
-        series2.getData().add(new XYChart.Data<>(50, "Course 1"));
-        series2.getData().add(new XYChart.Data<>(80, "Course 2"));
-        series2.getData().add(new XYChart.Data<>(70, "Course 3"));
-        series2.getData().add(new XYChart.Data<>(90, "Course 4"));
+        series2.setName("Not Completed");
+        series2.getData().add(new XYChart.Data<>(overallnotCompletedPercent*100, "Overall"));
+        series2.getData().add(new XYChart.Data<>(majorIncompletedPercent*100, "Major"));
+        series2.getData().add(new XYChart.Data<>(electiveNotCompletedPercent*100, "Elective"));
 
         stackedProgress.getData().addAll(series1, series2);
     }

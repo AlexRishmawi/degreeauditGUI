@@ -21,57 +21,11 @@
             <VBox fx:id="container" spacing="10" />
         </content>
     </ScrollPane>
-    <StackPane fx:id="stackPane" prefHeight="49.0" prefWidth="1280.0" AnchorPane.bottomAnchor="671.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <children>
-         <Rectangle id="header" fx:id="headerShadow" fill="#73000a" height="46.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1280.0" StackPane.alignment="TOP_CENTER">
-            <effect>
-               <Shadow />
-            </effect>
-         </Rectangle>
-         <Rectangle id="header" fx:id="header" fill="#73000a" height="46.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1280.0" StackPane.alignment="TOP_CENTER" />
-            <ImageView fx:id="header_img" fitHeight="27.0" fitWidth="169.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_LEFT">
-                <image>
-                    <Image url="@assests/img/usc_logo_horizontal_RGB_G_rev.png" />
-                </image>
-                <StackPane.margin>
-                    <Insets left="7.0" top="9.0" />
-                </StackPane.margin>
-            </ImageView>
-         <Rectangle fill="#73000a" height="27.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="27.0" StackPane.alignment="TOP_RIGHT">
-            <StackPane.margin>
-               <Insets right="5.0" top="7.0" />
-            </StackPane.margin>
-         </Rectangle>
-            <MenuButton fx:id="menuButton" mnemonicParsing="false" prefHeight="23.0" prefWidth="69.0" styleClass="menuButton" StackPane.alignment="TOP_RIGHT">
-                <items>
-                    <MenuItem id="menu-items" mnemonicParsing="false" text="Log Out" />
-                </items>
-                <graphic>
-                    <ImageView fitHeight="29.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                            <Image url="@assests/img/1024px-Hamburger_icon_white.svg.png" />
-                        </image>
-                    </ImageView>
-                </graphic>
-                <StackPane.margin>
-                    <Insets />
-                </StackPane.margin>
-            </MenuButton>
-         <ImageView fitHeight="32.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_RIGHT">
-            <image>
-               <Image url="@assests/img/User-avatar.svg.png" />
-            </image>
-            <StackPane.margin>
-               <Insets right="6.0" top="7.0" />
-            </StackPane.margin>
-         </ImageView>
-        </children>
-    </StackPane>
    <StackPane prefHeight="43.0" prefWidth="1280.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="50.0">
       <children>
        <AnchorPane id="searchheader" minHeight="0.0" minWidth="0.0" prefHeight="45.0" prefWidth="334.0">
             <children>
-               <TextField id="courseSearchBar" fx:id="courseSearch" layoutX="-3.0" prefHeight="32.0" prefWidth="771.0" promptText="Search by First Name, Last Name, or USC ID" style="-fx-border-color: #73000a; -fx-border-width: 2; -fx-border-radius: 5;">
+               <TextField id="courseSearchBar" fx:id="courseSearch" layoutX="-3.0" prefHeight="32.0" prefWidth="771.0" promptText="Search by Keyword" style="-fx-border-color: #73000a; -fx-border-width: 2; -fx-border-radius: 5;">
                   <opaqueInsets>
                      <Insets left="5.0" />
                   </opaqueInsets>
@@ -95,6 +49,55 @@
             <StackPane.margin>
                <Insets left="775.0" right="5.0" />
             </StackPane.margin></AnchorPane>
+      </children>
+   </StackPane>
+   <StackPane fx:id="stackPane1" prefHeight="49.0" prefWidth="1280.0">
+      <children>
+         <Rectangle id="header" fx:id="headerShadow1" fill="#73000a" height="46.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1280.0" StackPane.alignment="TOP_CENTER">
+            <effect>
+               <Shadow />
+            </effect>
+         </Rectangle>
+         <Rectangle id="header" fx:id="header1" fill="#73000a" height="46.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1280.0" StackPane.alignment="TOP_CENTER" />
+         <ImageView fx:id="header_img1" fitHeight="27.0" fitWidth="169.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_LEFT">
+            <image>
+               <Image url="@assests/img/usc_logo_horizontal_RGB_G_rev.png" />
+            </image>
+            <StackPane.margin>
+               <Insets left="7.0" top="9.0" />
+            </StackPane.margin>
+         </ImageView>
+         <MenuButton fx:id="menuButton1" mnemonicParsing="false" prefHeight="23.0" prefWidth="69.0" styleClass="menu-item" StackPane.alignment="TOP_RIGHT">
+            <items>
+               <MenuItem id="menu-items" fx:id="dashboard" mnemonicParsing="false" onAction="#dashboardClicked" text="Dashboard" />
+               <MenuItem id="menu-items" fx:id="courseSearch1" mnemonicParsing="false" onAction="#courseSearchClicked" text="Search Course" />
+               <MenuItem id="menu-items" fx:id="plan" mnemonicParsing="false" onAction="#semesterPlanClicked" text="8-Semester Plan" />
+               <MenuItem id="menu-items" fx:id="logout" mnemonicParsing="false" onAction="#logOutClicked" text="Log Out" />
+            </items>
+            <graphic>
+               <ImageView fitHeight="29.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@assests/img/1024px-Hamburger_icon_white.svg.png" />
+                  </image>
+               </ImageView>
+            </graphic>
+            <StackPane.margin>
+               <Insets right="10.0" top="4.0" />
+            </StackPane.margin>
+         </MenuButton>
+         <Rectangle fill="#73000a" height="27.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="27.0" StackPane.alignment="TOP_RIGHT">
+            <StackPane.margin>
+               <Insets right="15.0" top="7.0" />
+            </StackPane.margin>
+         </Rectangle>
+         <ImageView fitHeight="32.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_RIGHT">
+            <image>
+               <Image url="@assests/img/User-avatar.svg.png" />
+            </image>
+            <StackPane.margin>
+               <Insets right="11.0" top="7.0" />
+            </StackPane.margin>
+         </ImageView>
       </children>
    </StackPane>
    
