@@ -16,7 +16,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 import aisle.App;
 
-public class LandingController implements Initializable{
+public class LandingController implements Initializable {
 
     @FXML
     private HBox Hbox;
@@ -44,7 +44,7 @@ public class LandingController implements Initializable{
 
     @FXML
     private Text welcome;
-    
+
     @FXML
     private void onLoginClicked(ActionEvent event) throws IOException {
         App.setRoot("login_page");
@@ -55,7 +55,7 @@ public class LandingController implements Initializable{
         App.setRoot("signup_page");
     }
 
-    private void sizes () {
+    private void sizes() {
         HboxLeft.prefWidthProperty().bind(parent.widthProperty().multiply(0.45));
         stackPaneLeft.prefWidthProperty().bind(parent.widthProperty().multiply(0.45));
         Hbox.prefWidthProperty().bind(parent.widthProperty().multiply(0.55));
