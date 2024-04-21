@@ -73,6 +73,10 @@ public class SignupController implements Initializable {
     private void back(ActionEvent event) throws IOException {
         App.setRoot("landing_page");
     }
+    
+    private void sizes () {
+        
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {

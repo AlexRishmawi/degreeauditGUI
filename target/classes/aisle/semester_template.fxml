@@ -1,0 +1,60 @@
+<StackPane fx:id="semester1" layoutX="10.0" layoutY="45.0" prefHeight="296.0" prefWidth="216.0">
+      <children>
+         <Rectangle arcHeight="25.0" arcWidth="25.0" fill="#ffffff00" height="271.0" opacity="0.52" stroke="#73000a" strokeWidth="3.0" width="199.0">
+            <effect>
+               <Shadow />
+            </effect>
+         </Rectangle>
+         <Rectangle arcHeight="25.0" arcWidth="25.0" fill="#ffffff00" height="268.0" stroke="#73000a" strokeWidth="3.0" width="202.0" />
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Fall 2024" StackPane.alignment="TOP_CENTER">
+            <StackPane.margin>
+               <Insets top="30.0" />
+            </StackPane.margin>
+            <font>
+               <Font name="Times New Roman Bold" size="18.0" />
+            </font>
+         </Text>
+         <VBox prefHeight="200.0" prefWidth="100.0">
+            <children>
+               <Label prefHeight="30.0" prefWidth="150.0" text="Class 1">
+                  <font>
+                     <Font name="Times New Roman Bold" size="15.0" />
+                  </font>
+                  <VBox.margin>
+                     <Insets left="10.0" />
+                  </VBox.margin>
+                  <padding>
+                     <Insets top="50.0" />
+                  </padding>
+               </Label>
+               <Label fx:id="classLevel" prefHeight="30.0" prefWidth="150.0" text="Class 2">
+                  <font>
+                     <Font name="Times New Roman Bold" size="15.0" />
+                  </font>
+                  <VBox.margin>
+                     <Insets left="10.0" />
+                  </VBox.margin>
+                  <padding>
+                     <Insets top="5.0" />
+                  </padding>
+               </Label>
+               <Label fx:id="level" prefHeight="30.0" prefWidth="150.0" text="Class 3">
+                  <font>
+                     <Font name="Times New Roman Bold" size="15.0" />
+                  </font>
+                  <VBox.margin>
+                     <Insets left="10.0" />
+                  </VBox.margin>
+               </Label>
+               <Label fx:id="level1" prefHeight="30.0" prefWidth="150.0" text="Class 4">
+                  <font>
+                     <Font name="Times New Roman Bold" size="15.0" />
+                  </font>
+                  <VBox.margin>
+                     <Insets left="10.0" />
+                  </VBox.margin>
+               </Label>
+            </children>
+         </VBox>
+      </children>
+   </StackPane>

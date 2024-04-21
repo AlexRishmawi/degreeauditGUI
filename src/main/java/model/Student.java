@@ -213,13 +213,17 @@ public class Student extends User {
         // Asign completed semesters to 8 semester plan
         this.semestersPlan.clear();
 
+        int totalCredit = this.degree.getTotalCreditRequired();
+
         // Add all completed semester
         for(Semester completedSemester: this.allSemester) {
             this.semestersPlan.add(completedSemester);
+            totalCredit -= completedSemester.getCreditLimit();
         }
 
         HashMap<UUID, Integer> allCourseNotTaken = new HashMap<>();
         ArrayList<Course> queueCourse = new ArrayList<>();
+  
 
         // Get all the course need to take
         HashMap<Course, Integer> majorCourses = this.degree.getMajorCourses();
@@ -233,11 +237,14 @@ public class Student extends User {
         ArrayList<ElectiveCategory> electiveList = this.degree.getElectiveList();
         for (ElectiveCategory category : electiveList) {
             for (Course course : category.getCourseChoices().keySet()) {
-                if (this.completeCourses.keySet().stream().anyMatch(c -> !c.equals(course))) {
+                if (this.completeCourses.keySet().stream().anyMatch(c -> !c.equals(course)) || 
+                        allCourseNotTaken.keySet().stream().anyMatch(cId -> !cId.equals(course.getID()))) 
+                {
                     allCourseNotTaken.put(course.getID(), category.getCourseChoices().get(course));
                     queueCourse.add(course);
                 }
             }
+            totalCredit += category.getCreditsRequired();
         }
 
         // Generate the course need to take
@@ -255,9 +262,11 @@ public class Student extends User {
             currYear = 2024;
         }
 
-
         int creditLimitLeft = 18;
         for (int level = 1; level <= 8; level++) {
+            if(totalCredit < 0) {
+                break;
+            }
             for (int i = queueCourse.size() - 1; i >= 0; i--) {
                 Course course = queueCourse.get(i);
                 int semesterPrefer = allCourseNotTaken.get(course.getID());
@@ -266,20 +275,31 @@ public class Student extends User {
                 }
 
                 int courseLimit = course.getCreditHours();
+                if(totalCredit < courseLimit) {
+                    continue;
+                } else if (totalCredit == courseLimit) {
+                    semesterCourse.add(course);
+                    queueCourse.remove(course);
+                    Semester tempSemester = new Semester(currSeason, currYear, courseLimit, new ArrayList<>(semesterCourse));
+                    this.semestersPlan.add(tempSemester);
+                }
+
                 if (courseLimit <= creditLimitLeft) {
                     creditLimitLeft -= courseLimit;
                     semesterCourse.add(course);
                     queueCourse.remove(course);
                 } else {
-                    Semester tempSemester = new Semester(currSeason, currYear, 18 - creditLimitLeft, new ArrayList<>(semesterCourse));
-                    this.semestersPlan.add(tempSemester);
-
                     if (currSeason.equalsIgnoreCase("fall")) {
                         currSeason = "Spring";
                         currYear += 1;
                     } else {
                         currSeason = "Fall";
-                    } 
+                    }
+                    
+                    int currentCredit = 18 - creditLimitLeft;
+                    Semester tempSemester = new Semester(currSeason, currYear, currentCredit, new ArrayList<>(semesterCourse));
+                    this.semestersPlan.add(tempSemester);
+                    totalCredit -= currentCredit;
        
                     semesterCourse.clear();
                     creditLimitLeft = 18;

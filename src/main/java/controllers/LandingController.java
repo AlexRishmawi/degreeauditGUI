@@ -1,15 +1,50 @@
 package controllers;
 
-import aisle.App;
-
-import java.io.IOException;
-import java.util.ResourceBundle;
-import java.net.URL;
+import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
+import javafx.scene.text.Text;
 
-public class LandingController implements Initializable {
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.fxml.Initializable;
+import aisle.App;
+
+public class LandingController implements Initializable{
+
+    @FXML
+    private HBox Hbox;
+
+    @FXML
+    private HBox HboxLeft;
+
+    @FXML
+    private ImageView logo;
+
+    @FXML
+    private AnchorPane parent;
+
+    @FXML
+    private StackPane stackPane;
+
+    @FXML
+    private StackPane stackPaneLeft;
+
+    @FXML
+    private Button tologin;
+
+    @FXML
+    private Button tosignup;
+
+    @FXML
+    private Text welcome;
+    
     @FXML
     private void onLoginClicked(ActionEvent event) throws IOException {
         App.setRoot("login_page");
@@ -20,8 +55,18 @@ public class LandingController implements Initializable {
         App.setRoot("signup_page");
     }
 
+    private void sizes () {
+        HboxLeft.prefWidthProperty().bind(parent.widthProperty().multiply(0.45));
+        stackPaneLeft.prefWidthProperty().bind(parent.widthProperty().multiply(0.45));
+        Hbox.prefWidthProperty().bind(parent.widthProperty().multiply(0.55));
+        stackPane.prefWidthProperty().bind(parent.widthProperty().multiply(0.55));
+        logo.fitWidthProperty().bind(stackPaneLeft.widthProperty().multiply(0.65));
+        logo.fitHeightProperty().bind(stackPaneLeft.heightProperty().multiply(0.65));
+
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        sizes();
     }
 }

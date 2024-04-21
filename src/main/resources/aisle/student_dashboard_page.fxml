@@ -21,11 +21,6 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.StudentDashboardController">
-   <ImageView fitHeight="720.0" fitWidth="1280.0" opacity="0.13" pickOnBounds="true" preserveRatio="true" styleClass="axis-label">
-      <image>
-         <Image url="@../../../../../../../Pictures/Screenies/Screenshot%202024-04-18%20205230.png" />
-      </image>
-   </ImageView>
    <StackPane layoutX="499.0" layoutY="27.0" prefHeight="243.0" prefWidth="765.0">
       <children>
          <Rectangle arcHeight="25.0" arcWidth="25.0" fill="#ffffff00" height="274.0" opacity="0.51" stroke="#73000a" strokeWidth="3.0" width="762.0">
@@ -121,15 +116,7 @@
                <Insets top="15.0" />
             </StackPane.margin>
          </Label>
-         <Label fx:id="ID" prefHeight="31.0" prefWidth="150.0" text="LEVEL" StackPane.alignment="CENTER_RIGHT">
-            <font>
-               <Font name="Times New Roman Bold" size="15.0" />
-            </font>
-            <StackPane.margin>
-               <Insets top="200.0" />
-            </StackPane.margin>
-         </Label>
-         <Label fx:id="classLevel" prefHeight="31.0" prefWidth="150.0" text="EMAIL" StackPane.alignment="CENTER_RIGHT">
+         <Label fx:id="email" prefHeight="31.0" prefWidth="150.0" text="EMAIL" StackPane.alignment="CENTER_RIGHT">
             <font>
                <Font name="Times New Roman Bold" size="15.0" />
             </font>
@@ -137,12 +124,20 @@
                <Insets top="138.0" />
             </StackPane.margin>
          </Label>
-         <Label fx:id="level" prefHeight="31.0" prefWidth="150.0" text="ID" StackPane.alignment="CENTER_RIGHT">
+         <Label fx:id="ID" prefHeight="31.0" prefWidth="150.0" text="Level" StackPane.alignment="CENTER_RIGHT">
             <font>
                <Font name="Times New Roman Bold" size="15.0" />
             </font>
             <StackPane.margin>
                <Insets top="78.0" />
+            </StackPane.margin>
+         </Label>
+         <Label fx:id="level" prefHeight="29.0" prefWidth="150.0" text="ID" StackPane.alignment="CENTER_RIGHT">
+            <font>
+               <Font name="Times New Roman Bold" size="15.0" />
+            </font>
+            <StackPane.margin>
+               <Insets top="200.0" />
             </StackPane.margin>
          </Label>
       </children>
