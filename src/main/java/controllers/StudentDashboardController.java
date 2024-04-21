@@ -201,7 +201,6 @@ public class StudentDashboardController implements Initializable{
             sectionBox.setAlignment(javafx.geometry.Pos.CENTER_LEFT);
 
             Label sectionTitle = new Label("Major in " + student.getDegree().getSubject());
-            Line separater = new Line();
 
             for(Course course : majorCourses.keySet()) {
                 HBox courseBox = new HBox(5);
@@ -215,8 +214,8 @@ public class StudentDashboardController implements Initializable{
                 Region spacer = new Region();
                 HBox.setHgrow(spacer, Priority.ALWAYS);
                 
-                Label courseName = new Label(course.toStringCourseAbbr() + ": " + course.getCourseName());
-                Label courseCredits = new Label("Credit Hours: " + Integer.toString(course.getCreditHours()));
+                Label courseName = new Label(" " + course.toStringCourseAbbr() + ": " + course.getCourseName());
+                Label courseCredits = new Label("Credit Hours: " + Integer.toString(course.getCreditHours())  + "  ");
 
                 courseName.setStyle("-fx-font-weight: bold;");
                 courseCredits.setStyle("-fx-font-weight: bold;");
@@ -224,7 +223,7 @@ public class StudentDashboardController implements Initializable{
                 sectionBox.getChildren().addAll(courseBox);
             }
 
-            VBox.setMargin(sectionBox, new Insets(5));
+            VBox.setMargin(degreeProgress, new Insets(10));
 
             //Electives
             VBox otherBox = new VBox(10);
@@ -244,14 +243,18 @@ public class StudentDashboardController implements Initializable{
                     electiveBox.setStyle("-fx-background-color: red; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 5;");
                 }
                 
-                Label electiveName = new Label(elective.getType());
-                Label electiveCredits = new Label(Integer.toString(elective.getCreditsRequired()) + "credit");
+                Label electiveName = new Label(" " + elective.getType());
+                Label electiveCredits = new Label("Credit Hours: " + Integer.toString(elective.getCreditsRequired()) + "  ");
+                electiveName.setStyle("-fx-font-weight: bold;");
+                electiveCredits.setStyle("-fx-font-weight: bold;");
 
-                electiveBox.getChildren().addAll(electiveName, electiveCredits);
+                Region spacer = new Region();
+                HBox.setHgrow(spacer, Priority.ALWAYS);
+
+                electiveBox.getChildren().addAll(electiveName, spacer, electiveCredits);
                 otherBox.getChildren().addAll(electiveBox);
             }
-
-            degreeProgress.getChildren().addAll(sectionTitle, separater, sectionBox, new Line(), otherTitle, new Line(), otherBox);
+            degreeProgress.getChildren().addAll(sectionTitle, new Line(), sectionBox, new Line(), otherTitle, new Line(), otherBox);
 
         } else {
             return;
