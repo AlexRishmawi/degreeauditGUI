@@ -57,6 +57,12 @@ public class SemesterPlanController implements Initializable {
     private ImageView header_img;
 
     @FXML
+    private Label degreeLabel;
+
+    @FXML
+    private Label majorLabel;
+
+    @FXML
     void generateClick(ActionEvent event) throws IOException {
         if (semesterPlan_box != null) {
             semesterPlan_box.getChildren().clear();
@@ -126,5 +132,7 @@ public class SemesterPlanController implements Initializable {
         level.setText(student.getLevel().toString());
         ID.setText(student.getStudentID());
         email.setText(student.getEmail());
+        degreeLabel.setText("Bachelor of Science");
+        majorLabel.setText(student.getDegree().getSubject());
     }
 }
