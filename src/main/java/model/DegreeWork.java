@@ -292,11 +292,14 @@ public class DegreeWork {
     
 
     public Student getCurrentStudent() {
-        if (this.currentUser.isStudent()) {
-            return ((Advisor) this.currentUser).getCurrentStudent();
+        User currentUser = getCurrentUser();
+        if (currentUser instanceof Student) {
+            return (Student) currentUser;
         }
-        System.out.println(this.currentUser.getFirstName());
-        return (Student) this.currentUser;
+        if (currentUser instanceof Advisor) {
+            return ((Advisor) currentUser).getCurrentStudent();
+        }
+        throw new IllegalStateException("Current user is not a student or Advisor");
     }
 
     public String getStudentInfo(UUID id) {

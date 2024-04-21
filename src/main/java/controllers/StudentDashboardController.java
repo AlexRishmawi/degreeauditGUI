@@ -114,6 +114,11 @@ public class StudentDashboardController implements Initializable{
     }
 
     @FXML
+    void courseSearchClicked(ActionEvent event) throws IOException {
+        App.setRoot("student_search_page");
+    }
+
+    @FXML
     void semesterPlanClicked(ActionEvent event) throws IOException {
         App.setRoot("semester_plan_page");
     }
@@ -218,7 +223,7 @@ public class StudentDashboardController implements Initializable{
             //Major
             degreeProgress.getChildren().clear();
             HashMap<Course, Integer> majorCourses = ((Student) degreeWork.getCurrentUser()).getDegree().getMajorCourses();
-            
+
             VBox sectionBox = new VBox(10);
             sectionBox.setStyle("-fx-background-color: white; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 5;");
             sectionBox.setPadding(new Insets(5, 10, 5, 10)); // Apply padding inside the HBox
@@ -230,7 +235,8 @@ public class StudentDashboardController implements Initializable{
 
             for(Course course : majorCourses.keySet()) {
                 HBox courseBox = new HBox(5);
-                if(student.getCompletedCourse().containsKey(course)) {
+
+                if(student.getCompletedCourse().keySet().stream().anyMatch(c -> c.getID().equals(course.getID()))) {
                     courseBox.setStyle("-fx-background-color: green; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 5;");
                 } else {
                     courseBox.setStyle("-fx-background-color: red; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 5;");
@@ -240,8 +246,10 @@ public class StudentDashboardController implements Initializable{
                 HBox.setHgrow(spacer, Priority.ALWAYS);
                 
                 Label courseName = new Label(course.toStringCourseAbbr() + ": " + course.getCourseName());
-                Label courseCredits = new Label(Integer.toString(course.getCreditHours()));
+                Label courseCredits = new Label("Credit Hours: " + Integer.toString(course.getCreditHours()));
 
+                courseName.setStyle("-fx-font-weight: bold;");
+                courseCredits.setStyle("-fx-font-weight: bold;");
                 courseBox.getChildren().addAll(courseName, spacer, courseCredits);
                 sectionBox.getChildren().addAll(courseBox);
             }
@@ -265,14 +273,11 @@ public class StudentDashboardController implements Initializable{
                 } else {
                     electiveBox.setStyle("-fx-background-color: red; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 5;");
                 }
-
-                Region spacer = new Region();
-                HBox.setHgrow(spacer, Priority.ALWAYS);
                 
                 Label electiveName = new Label(elective.getType());
-                Label electiveCredits = new Label(Integer.toString(elective.getCreditsRequired()));
+                Label electiveCredits = new Label(Integer.toString(elective.getCreditsRequired()) + "credit");
 
-                electiveBox.getChildren().addAll(electiveName, spacer, electiveCredits);
+                electiveBox.getChildren().addAll(electiveName, electiveCredits);
                 otherBox.getChildren().addAll(electiveBox);
             }
 
