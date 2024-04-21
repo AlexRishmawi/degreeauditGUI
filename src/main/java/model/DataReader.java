@@ -97,7 +97,7 @@ public class DataReader extends DataConstants {
                             ArrayList<Course> temp_courses = new ArrayList<>();
                             JSONArray temp_coursesJsonArray = (JSONArray) allSemJsonObject.get(SESMESTER_COURSES);
                             for(int k = 0; k < temp_coursesJsonArray.size(); k++) {
-                                Course course = courseList.getCourse(UUID.fromString((String) temp_coursesJsonArray.get(j)));
+                                Course course = courseList.getCourse(UUID.fromString((String) temp_coursesJsonArray.get(k)));
                                 temp_courses.add(course);
                             }
                             Semester tempSemester = new Semester(temp_season, temp_year, temp_limit, temp_courses);

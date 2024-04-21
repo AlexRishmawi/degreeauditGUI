@@ -27,7 +27,7 @@
             {
                 "season": "FALL",
                 "year": 2024,
-                "creditLimit": 9,
+                "creditLimit": 7,
                 "courses": [
                     "0ee3fc1c-ec19-4637-aeb5-614577b6d22f",
                     "ceb7cd60-abcc-4bc1-a3b1-a30b81a824cd",
@@ -38,7 +38,7 @@
         "currentSemester": {
             "season": "SPRING",
             "year": 2025,
-            "creditLimit": 9,
+            "creditLimit": 7,
             "courses": [
                 "732e0849-4531-43d5-ae8e-363b59958631",
                 "66089424-f471-402b-93de-660c04a87675",
@@ -74,7 +74,7 @@
             {
                 "season": "FALL",
                 "year": 2024,
-                "creditLimit": 9,
+                "creditLimit": 7,
                 "courses": [
                     "0ee3fc1c-ec19-4637-aeb5-614577b6d22f",
                     "ceb7cd60-abcc-4bc1-a3b1-a30b81a824cd",
@@ -85,7 +85,7 @@
         "currentSemester": {
             "season": "SPRING",
             "year": 2025,
-            "creditLimit": 18,
+            "creditLimit": 7,
             "courses": [
                 "732e0849-4531-43d5-ae8e-363b59958631",
                 "66089424-f471-402b-93de-660c04a87675",
@@ -121,7 +121,7 @@
             {
                 "season": "FALL",
                 "year": 2024,
-                "creditLimit": 9,
+                "creditLimit": 7,
                 "courses": [
                     "0ee3fc1c-ec19-4637-aeb5-614577b6d22f",
                     "ceb7cd60-abcc-4bc1-a3b1-a30b81a824cd",
@@ -132,7 +132,7 @@
         "currentSemester": {
             "season": "SPRING",
             "year": 2025,
-            "creditLimit": 18,
+            "creditLimit": 7,
             "courses": [
                 "732e0849-4531-43d5-ae8e-363b59958631",
                 "66089424-f471-402b-93de-660c04a87675",
