@@ -11,9 +11,11 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -23,7 +25,8 @@ import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
-
+import javafx.stage.Stage;
+import model.Advisor;
 import model.DegreeWork;
 import model.Student;
 
@@ -53,11 +56,13 @@ public class AdvisorSearchController implements Initializable {
     @FXML
     private VBox studentList;
 
+    DegreeWork degreeWork = DegreeWork.getInstance();
+
     @FXML
     void searchClicked(ActionEvent event) {
         String searchText = advisorSearch.getText();
 
-        DegreeWork degreeWork = DegreeWork.getInstance();
+        
         if (degreeWork.getCurrentUser().isStudent()) {
             return;
         }
@@ -99,16 +104,30 @@ public class AdvisorSearchController implements Initializable {
     }
 
     private void handleViewDetails(Student student) {
-        try {
-            System.out.println("View details for: " + student.getFirstName());
-            DegreeWork.getInstance().setCurrentStudent(student.getID());
-            App.setRoot("landing_page");
-        } catch (IOException e) {
-            e.printStackTrace();
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Cannot load the student details page.");
+        System.out.println("View details for: " + student.getFirstName());
+        if(degreeWork.getCurrentUser() instanceof Advisor) {
+            displayStudent(student);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("You are not an advisor");
+            alert.setContentText("Only advisors can view student details");
             alert.showAndWait();
         }
     }
+
+    private void displayStudent(Student student) {
+        Stage listViewStage = new Stage();
+        listViewStage.setTitle("Courses");
+
+        ListView<String> listView = new ListView<>();
+        listView.getItems().add(student.toString());
+
+        Scene scene = new Scene(listView, 1153, 700);
+        listViewStage.setScene(scene);
+        listViewStage.show();
+    }
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
