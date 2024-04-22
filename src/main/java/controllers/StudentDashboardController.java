@@ -99,6 +99,17 @@ public class StudentDashboardController implements Initializable{
     @FXML
     private MenuItem dashboard;
     
+    
+    @FXML
+    void courseSearchClicked(ActionEvent event) throws IOException{
+        App.setRoot("student_search_page");
+    }
+
+    @FXML
+    void dashboardClicked(ActionEvent event) throws IOException{
+        App.setRoot("student_dashboard_page");
+    }
+
     @FXML
     void logOutClicked(ActionEvent event) throws IOException{
         DegreeWork degreeWork = DegreeWork.getInstance();
@@ -108,23 +119,13 @@ public class StudentDashboardController implements Initializable{
     }
 
     @FXML
-    void dashboardClicked(ActionEvent event) throws IOException {
-        App.setRoot("student_dashboard");
-    }
-
-    @FXML
-    void courseSearchClicked(ActionEvent event) throws IOException {
-        App.setRoot("student_search_page");
-    }
-
-    @FXML
-    void semesterPlanClicked(ActionEvent event) throws IOException {
-        App.setRoot("semester_plan_page");
-    }
-
-    @FXML
-    void notSetupClicked(ActionEvent event) throws IOException {
+    void scheduleAppointment(ActionEvent event) throws IOException{
         App.setRoot("appointment_page");
+    }
+
+    @FXML
+    void semesterPlanClicked(ActionEvent event) throws IOException{
+        App.setRoot("semester_plan_page");
     }
     
     DegreeWork degreeWork = DegreeWork.getInstance();

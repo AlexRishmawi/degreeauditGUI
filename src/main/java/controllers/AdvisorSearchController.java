@@ -1,9 +1,11 @@
 package controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import aisle.App;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -126,6 +128,13 @@ public class AdvisorSearchController implements Initializable {
         listViewStage.show();
     }
 
+    @FXML
+    void logOutClicked(ActionEvent event) throws IOException{
+        DegreeWork degreeWork = DegreeWork.getInstance();
+        degreeWork.logout();
+        
+        App.setRoot("landing_page");
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

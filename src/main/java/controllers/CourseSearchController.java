@@ -1,9 +1,11 @@
 package controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import aisle.App;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -57,10 +59,28 @@ public class CourseSearchController implements Initializable{
     @FXML
     private ScrollPane myScrollPane;
 
+    @FXML
+    void courseSearchClicked(ActionEvent event) throws IOException{
+        App.setRoot("student_search_page");
+    }
+
+    @FXML
+    void dashboardClicked(ActionEvent event) throws IOException{
+        App.setRoot("student_dashboard_page");
+    }
+
+    @FXML
+    void logOutClicked(ActionEvent event) throws IOException{
+        App.setRoot("landing_page");
+    }
+
+    @FXML
+    void semesterPlanClicked(ActionEvent event) throws IOException{
+        App.setRoot("semester_plan_page");
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        headerShadow.widthProperty().bind(stackPane.widthProperty());
-        header.widthProperty().bind(stackPane.widthProperty());
         container.setFillWidth(true); // Ensuring that the VBox inside the ScrollPane expands to fill the width.
     }
 

@@ -192,7 +192,7 @@
                <Insets right="-50.0" top="72.0" />
             </StackPane.margin>
          </Label>
-         <Button fx:id="appointmentButton" mnemonicParsing="false" onAction="#notSetupClicked" prefHeight="3.0" prefWidth="220.0" text="Schedule Appointment" StackPane.alignment="BOTTOM_CENTER">
+         <Button fx:id="appointmentButton" mnemonicParsing="false" onAction="#scheduleAppointment" prefHeight="3.0" prefWidth="220.0" text="Schedule Appointment" StackPane.alignment="BOTTOM_CENTER">
             <font>
                <Font name="Times New Roman Bold" size="15.0" />
             </font>

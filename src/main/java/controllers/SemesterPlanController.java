@@ -61,6 +61,21 @@ public class SemesterPlanController implements Initializable {
     private Label majorLabel;
 
     @FXML
+    void courseSearchClicked(ActionEvent event) throws IOException {
+        App.setRoot("student_search_page");
+    }
+
+    @FXML
+    void dashboardClicked(ActionEvent event) throws IOException {
+        App.setRoot("student_dashboard_page");
+    }
+
+    @FXML
+    void semesterPlanClicked(ActionEvent event) throws IOException{
+        App.setRoot("semester_plan_page");
+    }
+
+    @FXML
     void generateClick(ActionEvent event) throws IOException {
         if (semesterPlan_box != null) {
             semesterPlan_box.getChildren().clear();
@@ -116,16 +131,6 @@ public class SemesterPlanController implements Initializable {
         degreeWork.logout();
 
         App.setRoot("landing_page");
-    }
-
-    @FXML
-    void dashboardClicked(ActionEvent event) throws IOException {
-        App.setRoot("student_dashboard_page");
-    }
-
-    @FXML
-    void courseSearchClicked(ActionEvent event) throws IOException {
-        App.setRoot("student_search_page");
     }
 
     @Override

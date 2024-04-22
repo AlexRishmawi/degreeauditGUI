@@ -77,8 +77,6 @@
          </ImageView>
          <MenuButton fx:id="menuButton" mnemonicParsing="false" prefHeight="23.0" prefWidth="69.0" styleClass="menu-item" StackPane.alignment="TOP_RIGHT">
             <items>
-               <MenuItem id="menu-items" fx:id="students" mnemonicParsing="false" onAction="#studentSearchClicked" text="Search Student" />
-               <MenuItem id="menu-items" fx:id="courseSearch" mnemonicParsing="false" onAction="#courseSearchClicked" text="Search Course" />
                <MenuItem id="menu-items" fx:id="logout" mnemonicParsing="false" onAction="#logOutClicked" text="Log Out" />
             </items>
             <graphic>
