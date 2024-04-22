@@ -50,7 +50,7 @@ public class DataReader extends DataConstants {
                         String level = (String) userJSON.get(STUDENT_CLASSIFICATION);
                         UUID advisorID = UUID.fromString((String) userJSON.get(STUDENT_ADVISOR_ID));
                         String studentID = (String) userJSON.get(STUDENT_ID);
-                        int advisorIndex = mappingAdvisorToStudent.get(advisorID);
+                        int advisorIndex = mappingAdvisorToStudent.get(advisorID) == null ? 0 : mappingAdvisorToStudent.get(advisorID);
                         Advisor advisor = (Advisor) loadedUsers.get(advisorIndex);
 
                         ArrayList<String> notes = new ArrayList<>();
