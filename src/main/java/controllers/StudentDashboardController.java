@@ -212,8 +212,8 @@ public class StudentDashboardController implements Initializable{
             email.setText(student.getEmail());
             ID.setText(student.getStudentID());
 
-            degreeLabel.setText(student.getDegree().getSubject());
-            majorLabel.setText(student.getDegree().toString());
+            degreeLabel.setText("Bachelor of Science");
+            majorLabel.setText(student.getDegree().getSubject());
 
             advisorName.setText(student.getAdvisor().getFirstName() + " " + student.getAdvisor().getLastName());
             advisorEmail.setText(student.getAdvisor().getEmail());
