@@ -150,7 +150,7 @@ public class CourseSearchController implements Initializable{
         VBox content = new VBox(10);
         content.setAlignment(Pos.TOP_LEFT);
         Label messageLabel = new Label(course.getSubject() + " " + course.getCode() + ": " + course.getCourseName()
-            + "\n" + course.getDescription() + "\n\nCredits: " + course.getCreditHours());
+            + "\n" + course.getDescription() + "\n\nCredits: " + course.getCreditHours() + "\nPrerequisites: " + course.getPrerequisites() + "\n\n" + "Semesters Offered: " + course.getSemesterOffer());
         Button closeButton = new Button("Close");
         closeButton.setOnAction(e -> popupStage.close());
 
