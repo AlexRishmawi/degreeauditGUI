@@ -131,12 +131,11 @@ public class StudentDashboardController implements Initializable{
     DegreeWork degreeWork = DegreeWork.getInstance();
         
     Student student = degreeWork.getCurrentUser().isStudent() ? (Student) degreeWork.getCurrentUser() : degreeWork.getCurrentStudent();
-
-    double completed = student.getCompletedCourse().keySet().stream().mapToDouble(c -> c.getCreditHours()).sum();
-    double inProgress = student.getCurrentSemester().getCourses().stream().mapToDouble(c -> c.getCreditHours()).sum();
-    double notStarted = student.getDegree().getTotalCreditRequired() - (completed + inProgress);
     
     private void setupPieChart() {
+        double completed = student.getCompletedCourse().keySet().stream().mapToDouble(c -> c.getCreditHours()).sum();
+        double inProgress = student.getCurrentSemester().getCourses().stream().mapToDouble(c -> c.getCreditHours()).sum();
+        double notStarted = student.getDegree().getTotalCreditRequired() - (completed + inProgress);
 
         ObservableList <PieChart.Data> pieChartData = FXCollections.observableArrayList(
             new PieChart.Data("Completed", completed),
@@ -151,6 +150,10 @@ public class StudentDashboardController implements Initializable{
 
     @SuppressWarnings("unchecked")
     private void setupStackedBarChart() {
+        double completed = student.getCompletedCourse().keySet().stream().mapToDouble(c -> c.getCreditHours()).sum();
+        double inProgress = student.getCurrentSemester().getCourses().stream().mapToDouble(c -> c.getCreditHours()).sum();
+        double notStarted = student.getDegree().getTotalCreditRequired() - (completed + inProgress);
+
         double overallCompleted = student.getCompletedCourse().keySet().stream().mapToDouble(c -> c.getCreditHours()).sum();
         double overallCompletedPercent = overallCompleted / student.getDegree().getTotalCreditRequired();
 

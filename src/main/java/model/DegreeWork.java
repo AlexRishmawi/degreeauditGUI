@@ -88,6 +88,8 @@ public class DegreeWork {
             String level, Advisor advisor, ArrayList<String> notes, Degree degree,
             double instituteGPA, double programGPA, String status) {
         Student tempStudent = new Student(firstName, lastName, email, password, studentID, level, advisor, notes, degree, instituteGPA, programGPA, status, new HashMap<Course, String>(), null, new ArrayList<>());
+        tempStudent.setCurrentSemester(new Semester("FALL", 2024, 18, new ArrayList<Course>()));
+        tempStudent.setAdvisor(advisor == null ? new Advisor("N/A", "N/A", "N/A", "N/A", null) : advisor);
         this.userList.addUser(tempStudent);
         this.degreeList.addDegree(degree);
         setCurrentUser(tempStudent);
