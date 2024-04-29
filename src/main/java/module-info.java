@@ -1,3 +1,4 @@
+@SuppressWarnings("module")
 module aisle {
     requires javafx.controls;
     requires javafx.fxml;
