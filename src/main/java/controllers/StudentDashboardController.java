@@ -151,8 +151,6 @@ public class StudentDashboardController implements Initializable{
     @SuppressWarnings("unchecked")
     private void setupStackedBarChart() {
         double completed = student.getCompletedCourse().keySet().stream().mapToDouble(c -> c.getCreditHours()).sum();
-        double inProgress = student.getCurrentSemester().getCourses().stream().mapToDouble(c -> c.getCreditHours()).sum();
-        double notStarted = student.getDegree().getTotalCreditRequired() - (completed + inProgress);
 
         double overallCompleted = student.getCompletedCourse().keySet().stream().mapToDouble(c -> c.getCreditHours()).sum();
         double overallCompletedPercent = overallCompleted / student.getDegree().getTotalCreditRequired();
